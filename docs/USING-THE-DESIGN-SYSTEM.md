@@ -85,7 +85,25 @@ Wire it in, don't rip it out.
 the project. Claude Code then gets MCP tools to search / view / add from `@efounders`
 conversationally — it pulls the right component while building, no manual `shadcn add`.
 
-## Step 2 — Use it day to day
+## Step 2 — Figma bridge & daily use
+
+### Bridge to Figma — the design surface
+
+Going all the way to Figma is what makes a *team* share one truth. **The code stays the
+source of truth; Figma reflects it** (code → Figma, never the reverse).
+
+1. **Variables = your tokens** — the Figma file's variables mirror the project's tokens (its brand).
+2. **A Figma library that reflects the real components** — your storybook is the reference.
+3. **Code Connect** links each Figma component to its real code component → Dev Mode shows the actual code.
+
+Build it *from the code* with the Figma MCP (the `figma-generate-library` skill).
+
+**Already have a Figma DS on the project?** Treat it as a *reference to harvest*, not a
+base: regenerate the library from the code, fold any genuinely-better decisions from the
+old file back into the code (they reappear in the new Figma), then archive the old file.
+Never keep two competing sources.
+
+### Day to day  *(still being refined)*
 
 In a Claude Code conversation **inside the project**:
 
