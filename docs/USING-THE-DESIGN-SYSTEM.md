@@ -18,7 +18,7 @@ project, set your own brand on top, and Claude builds on-brand from it.
 ## Resources
 
 - **Storybook (live reference):** https://ds-registry-five.vercel.app
-- **Registry (install from):** https://ds-registry-five.vercel.app/r/{name}.json
+- **Registry** — what `shadcn add` reads under the hood (not a page to open). Pattern `…/r/{name}.json`, where `{name}` is the component, e.g. `/r/theme.json`.
 - **Repo:** https://github.com/eFounders/ds-registry
 
 ## Independence — spinning a startup out
