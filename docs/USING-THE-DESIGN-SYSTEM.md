@@ -12,7 +12,7 @@ project, set your own brand on top, and Claude builds on-brand from it.
 - **The agent reads `CLAUDE.md`.** A `CLAUDE.md` at the project root, pointing to the
   tokens, components and rules, is what makes Claude build on-brand. The single
   highest-leverage file.
-- **Consume, don't copy.** Pull from the registry with `shadcn add`; update by re-pulling.
+- **Seed once, then you own it.** `shadcn add` writes the code *into your repo* — you own it. The registry is a starting point + an optional update channel, **not a runtime or build dependency**.
 - **The storybook shows the real components.** Your live reference — it can't drift.
 
 ## Resources
@@ -20,6 +20,17 @@ project, set your own brand on top, and Claude builds on-brand from it.
 - **Storybook (live reference):** https://ds-registry-five.vercel.app
 - **Registry (install from):** https://ds-registry-five.vercel.app/r/{name}.json
 - **Repo:** https://github.com/eFounders/ds-registry
+
+## Independence — spinning a startup out
+
+Each startup ends up independent, with its own codebase — and the design system never
+gets in the way of that:
+
+- `shadcn add` **writes the code into the startup's repo** — it owns the tokens and
+  components locally. The registry is **not** a runtime or build dependency.
+- Spinning out → it **keeps all its code** and simply stops pulling from `@efounders`. Nothing breaks.
+- Wants its own distribution later? It **forks the registry** to its own.
+- Its **brand is already its own** (`--brand-*` set locally) — only the starting skeleton was ever shared.
 
 ---
 
