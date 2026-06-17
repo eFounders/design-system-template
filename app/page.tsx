@@ -228,28 +228,76 @@ export default function Home() {
         <main className="mx-auto flex max-w-4xl flex-1 flex-col gap-16 px-6 py-10 lg:px-12">
           {/* ===== FOUNDATIONS ===== */}
           <Layer id="foundations" index="01" title="Foundations" hint="The raw material. Set the brand here; everything else follows.">
-            <Group id="colors" title="Semantic colors">
+            <Group id="colors" title="Surfaces">
               <Swatches
                 items={[
                   ["background", "--background"],
                   ["foreground", "--foreground"],
                   ["card", "--card"],
-                  ["primary", "--primary"],
-                  ["secondary", "--secondary"],
+                  ["card-foreground", "--card-foreground"],
+                  ["popover", "--popover"],
+                  ["popover-foreground", "--popover-foreground"],
+                  ["surface-sunken", "--surface-sunken"],
                   ["muted", "--muted"],
-                  ["accent", "--accent"],
+                ]}
+              />
+            </Group>
+            <Group title="Text levels">
+              <Swatches
+                items={[
+                  ["muted-foreground", "--muted-foreground"],
+                  ["foreground-subtle", "--foreground-subtle"],
+                  ["link", "--link"],
+                ]}
+              />
+            </Group>
+            <Group title="Borders & focus">
+              <Swatches
+                items={[
                   ["border", "--border"],
+                  ["input", "--input"],
+                  ["border-strong", "--border-strong"],
                   ["ring", "--ring"],
                 ]}
               />
             </Group>
-            <Group title="Feedback">
+            <Group title="Primary + states">
               <Swatches
                 items={[
-                  ["success", "--success"],
-                  ["warning", "--warning"],
-                  ["info", "--info"],
+                  ["primary", "--primary"],
+                  ["primary-foreground", "--primary-foreground"],
+                  ["primary-hover", "--primary-hover"],
+                  ["primary-active", "--primary-active"],
+                  ["primary-subtle", "--primary-subtle"],
+                ]}
+              />
+            </Group>
+            <Group title="Secondary & accent">
+              <Swatches
+                items={[
+                  ["secondary", "--secondary"],
+                  ["secondary-foreground", "--secondary-foreground"],
+                  ["secondary-hover", "--secondary-hover"],
+                  ["accent", "--accent"],
+                  ["accent-foreground", "--accent-foreground"],
+                ]}
+              />
+            </Group>
+            <Group title="Feedback (full)">
+              <Swatches
+                items={[
                   ["destructive", "--destructive"],
+                  ["destructive-subtle", "--destructive-subtle"],
+                  ["destructive-foreground", "--destructive-foreground"],
+                  ["success", "--success"],
+                  ["success-subtle", "--success-subtle"],
+                  ["success-foreground", "--success-foreground"],
+                  ["warning", "--warning"],
+                  ["warning-subtle", "--warning-subtle"],
+                  ["warning-foreground", "--warning-foreground"],
+                  ["info", "--info"],
+                  ["info-subtle", "--info-subtle"],
+                  ["info-foreground", "--info-foreground"],
                 ]}
               />
             </Group>
