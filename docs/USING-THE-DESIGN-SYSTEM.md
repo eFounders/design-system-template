@@ -1,79 +1,75 @@
-# Using the eFounders design system
+# How to use the design system
 
-One shared, brand-agnostic base + an AI-native process. Each project keeps its own
-skin; the method is the same everywhere. This guide has three parts:
+A shared design-system base + an AI-native way of working. You consume it per
+project, set your own brand on top, and Claude builds on-brand from it.
 
-1. **Step 0 — Is your DS AI-native?** (understand it, audit your project)
-2. **Onboard a project** (new company · existing company with a DS)
-3. **How you use it day to day** (light for now — to expand)
+> Notion version (with per-step sub-pages): https://app.notion.com/p/3821cc0bd5bc818986acd792a4490721
 
----
+## What to remember (the essentials)
 
-## 1 · Step 0 — Is your DS AI-native?
+- **The skeleton is shared, the brand is yours.** Set `--brand-*`, font, `--radius`,
+  density per project — every component follows.
+- **The agent reads `CLAUDE.md`.** A `CLAUDE.md` at the project root, pointing to the
+  tokens, components and rules, is what makes Claude build on-brand. The single
+  highest-leverage file.
+- **Consume, don't copy.** Pull from the registry with `shadcn add`; update by re-pulling.
+- **The storybook shows the real components.** Your live reference — it can't drift.
 
-An **AI-native design system** is one an agent can *read and build from reliably*:
-the brand lives in machine-readable tokens, the rules live where the agent reads
-(the code + a `CLAUDE.md`), components are real and reused, and the system is a
-versioned source of truth — not copied per project.
+## Resources
 
-**Audit any project with one command:** point `/ds-audit` at a **git repo** — a
-GitHub repo (URL or `owner/repo`) it clones, or the repo you're already in. It
-inspects the codebase (always the repo, closest to the code — not loose local
-files), scores the criteria below with evidence, classifies the project, and
-returns a prioritized plan.
-
-### The checklist (what `/ds-audit` scores)
-
-**A · Tokens** — semantic, named by role (`--primary`, `--muted-foreground`); intent on
-each (use for / not for); light + dark; brand isolated to a few knobs; shadcn contract respected.
-**B · Conventions** — a `CLAUDE.md` at the root pointing to tokens/components/rules
-(*highest-leverage item*); component specs the agent can read; the 5 states documented; hard
-rules explicit (one primary/screen, one icon library, never invent a value).
-**C · Components & storybook** — real reused components (no `Button`/`PrimaryButton` sprawl);
-a living storybook that renders the *real* components (no drift).
-**D · Distribution** — a versioned source projects *consume* (registry), not copy; brand-agnostic base.
-**E · Verification** — a deterministic gate on PRs; a component audit; prototyping skills that build from the codebase.
-
-> Most boxes checked → an agent builds on-brand from your code with little hand-holding.
+- **Storybook (live reference):** https://ds-registry-five.vercel.app
+- **Registry (install from):** https://ds-registry-five.vercel.app/r/{name}.json
+- **Repo:** https://github.com/eFounders/ds-registry
 
 ---
 
-## 2 · Onboard a project — what do I do?
+## Step 0 — Audit your project
 
-### A · New company (greenfield)
+Know where a project stands before doing anything else.
 
-1. **Ensure shadcn + Tailwind v4** in the project (`npx shadcn@latest init` if needed).
-2. **Point at the registry** — add to `components.json`:
-   ```json
-   "registries": { "@efounders": "https://ds-registry-five.vercel.app/r/{name}.json" }
-   ```
-3. **Pull the base** — `shadcn add @efounders/theme` (the token structure) + any bespoke
-   you need (`tag`, `stat`, `filter-bar`, `chat-message`, `chat-composer`, `chat-typing`).
-   Standard components come from shadcn (`shadcn add button input table …`) and are branded
-   automatically by the theme.
-4. **Set the brand** — edit `--brand-*`, `--font-base`, `--radius`, `--text-base` in the
-   tokens file. Everything follows.
-5. **Drop in `CLAUDE.md`** — copy `templates/CLAUDE.md`, fill the paths + tone.
-6. **Confirm + build** — run `/ds-audit` to check you're AI-native, then `/design-prototype …`.
+Point `/ds-audit` at a **git repo** — a GitHub repo (URL or `owner/repo`) it clones, or
+the repo you're already in. It audits the codebase (always the repo, closest to the
+code — not loose local files), scores it with evidence, classifies it, and returns a
+prioritized plan.
 
-### B · Existing company that already has a DS
+**What it checks**
 
-The goal is to *wire it in*, not rip it out.
+- **A · Tokens** — semantic, named by role (`--primary`…); intent per token; light + dark;
+  brand isolated to a few knobs; shadcn contract respected.
+- **B · Conventions** — a `CLAUDE.md` at the root (the key one); component specs the agent
+  can read; the 5 states documented; hard rules explicit.
+- **C · Components & storybook** — real reused components (no `Button`/`PrimaryButton`
+  sprawl); a living storybook rendering the real components.
+- **D · Distribution** — consumed from a versioned source (registry), not copied;
+  brand-agnostic base.
+- **E · Verification** — a deterministic gate on PRs; prototyping skills that build from the codebase.
 
-1. **Run `/ds-audit`** in their repo → verdict + plan. Keep what works.
-2. **Add the conventions layer** (usually the missing piece) — a `CLAUDE.md` pointing to
-   *their* tokens, components, and rules (adapt `templates/CLAUDE.md`). This alone makes their
-   DS AI-native.
-3. **Align token naming to the shadcn contract** where it's cheap (`--primary`, `--background`,
-   `--ring`…) so shadcn components plug in — **keep their brand values**.
-4. **Fix the storybook** if it's a static mirror → point it at the real components.
-5. **Add the deterministic gate** if missing.
-6. **Consume only what they lack** from `@efounders` (a bespoke component), never a fork.
-   Re-run `/ds-audit` to confirm.
+## Step 1 — Onboard a project
 
----
+### A · Starting a new project
 
-## 3 · How you use it day to day  *(light — to expand)*
+1. **Ensure shadcn + Tailwind v4** (`npx shadcn@latest init` if needed).
+2. **Point at the registry** — add the `@efounders` namespace in `components.json`,
+   pointing to `https://ds-registry-five.vercel.app/r/{name}.json`.
+3. **Pull the base** — `shadcn add @efounders/theme` + any bespoke you need (`tag`, `stat`,
+   `filter-bar`, `chat-*`). Standard components come from shadcn and are branded automatically.
+4. **Set the brand** — edit `--brand-*`, `--font-base`, `--radius`, `--text-base`.
+5. **Add `CLAUDE.md`** — copy `templates/CLAUDE.md`, fill the paths + tone.
+6. **Check + build** — run `/ds-audit`, then `/design-prototype …`.
+
+### B · A project that already has a design system
+
+Wire it in, don't rip it out.
+
+1. **Run `/ds-audit`** → see where it stands. Keep what works.
+2. **Add `CLAUDE.md`** pointing to *its* tokens / components / rules — usually this alone
+   makes it AI-native.
+3. **Align token names** to the shadcn contract where cheap — keep its brand.
+4. **Point the storybook at the real components** if it's a static mock.
+5. **Pull only what's missing** from the registry, never a fork.
+6. **Re-run `/ds-audit`** to confirm.
+
+## Step 2 — Use it day to day
 
 In a Claude Code conversation **inside the project**:
 
@@ -84,10 +80,7 @@ In a Claude Code conversation **inside the project**:
 | a UX review | `/nelly-design-critique` + screenshots + goal |
 | a DS health check | `/ds-audit` |
 
-**Roles** — *PM* spins a prototype to align (`/design-prototype`); *Designer* maintains the
-base, sets the brand, refines screens, reviews; *Dev* pulls components and Claude codes
-on-brand from the `CLAUDE.md`. Same system, three altitudes — nobody re-explains it.
-
----
-
-*Repo: eFounders/ds-registry · Storybook: https://ds-registry-five.vercel.app · maintained once, consumed everywhere.*
+Because the project has its tokens + `CLAUDE.md`, what comes out is already on-brand —
+you don't re-explain the system each time. *Roles:* PM spins a prototype to align;
+Designer maintains the base, sets the brand, refines, reviews; Dev pulls components and
+Claude codes on-brand from the `CLAUDE.md`.
