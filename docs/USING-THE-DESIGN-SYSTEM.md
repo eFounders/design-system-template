@@ -63,3 +63,52 @@ out on-brand **automatically** — because of the `CLAUDE.md`.
 
 Set the brand in one place: `--brand-*`, `--font-base`, `--radius`, `--text-base`.
 Every component follows. Rose, Dona, Haze: same method, different skins.
+
+---
+
+## Is your DS AI-native? — checklist
+
+An AI-native design system is one an agent can **read and build from reliably**.
+
+**Tokens**
+- [ ] Colors/spacing/radius are semantic tokens named by role (`--primary`, `--muted-foreground`…), not raw hex in the code
+- [ ] Light + dark both defined
+- [ ] Brand set in one place (`--brand-*`, font, radius, density), overridable per project
+
+**Readable by the agent**
+- [ ] A `CLAUDE.md` at the root points to tokens, components, and rules
+- [ ] Components have specs (for / not for, variants, states) the agent can read
+- [ ] Rules are explicit: the 5 states, one primary per screen, one icon library, never invent a value
+
+**Components & storybook**
+- [ ] Components are real and reused (shadcn-based), not re-described
+- [ ] A living storybook renders the real components (can't drift)
+
+**Distribution**
+- [ ] Consumed from a versioned source (registry), not copied per project
+- [ ] Updating = re-pull, not re-paste
+
+**Verification (ideal)**
+- [ ] A deterministic gate catches hardcoded values / unknown tokens (`ds-check` on PRs)
+- [ ] Prototyping skills generate from the codebase (`design-prototype`, `design-frame`)
+
+> Most boxes checked → an agent builds on-brand from your code with little hand-holding. The `CLAUDE.md` is the highest-leverage box.
+
+## How Dev / Designer / PM use it together
+
+The shared base + `CLAUDE.md` are the common language: same tokens, components, rules — the three roles work in the same system, each at their altitude.
+
+| Role | What they use | What they produce |
+|---|---|---|
+| **PM** | `/design-prototype` + storybook as reference | a clickable prototype of a flow to align stakeholders, fast, no hand-off |
+| **Designer** | maintains the base; sets the project brand; `/design-frame`, `/design-prototype`, `/nelly-design-critique` | direction & brand, explored screens, quality review |
+| **Dev** | `shadcn add @efounders/…`; Claude reads `CLAUDE.md` → on-brand code; the `ds-check` gate | the real product, consistent with the DS |
+
+**The loop**
+
+1. PM frames the problem → quick prototype to align (Claude + the DS).
+2. Designer sets direction & brand, refines key screens, reviews quality.
+3. Dev builds it; Claude reuses the DS components; the gate keeps it conformant.
+4. Review (designer / critique) → ship.
+
+Nobody re-explains the system at each step — it's written where each person (and the agent) already works.
