@@ -656,20 +656,87 @@ function Group({
   )
 }
 
+function rgbToHex(rgb: string) {
+  const m = rgb.match(/rgba?\(([^)]+)\)/)
+  if (!m) return rgb
+  const parts = m[1].split(",").map((s) => s.trim())
+  const a = parts[3]
+  if (a !== undefined && parseFloat(a) < 1) return rgb // keep rgba for transparency (e.g. overlay)
+  const hex = (n: string) => (+n).toString(16).padStart(2, "0")
+  return `#${hex(parts[0])}${hex(parts[1])}${hex(parts[2])}`
+}
+
+// Primitives (the raw ramps). We resolve each to a hex, then reverse-map so any
+// semantic token can show which primitive it lands on — automatically, no hardcoding.
+const PRIMITIVES = [
+  ...[0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((s) => `neutral-${s}`),
+  ...[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((s) => `brand-${s}`),
+  "green-50", "green-500", "green-600",
+  "red-50", "red-500", "red-600",
+  "amber-50", "amber-400", "amber-500",
+  "sky-50", "sky-500", "sky-600",
+]
+
+function usePrimitiveReverseMap() {
+  const [map, setMap] = React.useState<Record<string, string>>({})
+  React.useEffect(() => {
+    const build = () => {
+      const probe = document.createElement("div")
+      probe.style.cssText = "position:absolute;opacity:0;pointer-events:none"
+      document.body.appendChild(probe)
+      const m: Record<string, string> = {}
+      for (const p of PRIMITIVES) {
+        probe.style.backgroundColor = `var(--${p})`
+        const hex = rgbToHex(getComputedStyle(probe).backgroundColor)
+        if (/^#/.test(hex) && !(hex in m)) m[hex] = p
+      }
+      probe.remove()
+      setMap(m)
+    }
+    build()
+    const obs = new MutationObserver(build)
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] })
+    return () => obs.disconnect()
+  }, [])
+  return map
+}
+
+function Swatch({ name, varName, primitiveMap }: { name: string; varName: string; primitiveMap: Record<string, string> }) {
+  const ref = React.useRef<HTMLDivElement>(null)
+  const [value, setValue] = React.useState("")
+
+  React.useEffect(() => {
+    const read = () => {
+      if (ref.current) setValue(rgbToHex(getComputedStyle(ref.current).backgroundColor))
+    }
+    read()
+    const obs = new MutationObserver(read)
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] })
+    return () => obs.disconnect()
+  }, [varName])
+
+  const primitive = primitiveMap[value]
+
+  return (
+    <div className="flex flex-col gap-1.5">
+      <div ref={ref} className="border-border h-12 w-full rounded-md border" style={{ background: `var(${varName})` }} />
+      <div className="flex flex-col">
+        <span className="text-xs font-medium">{name}</span>
+        <span className="text-muted-foreground font-mono text-[10px]">
+          {primitive ? `${primitive} · ` : ""}
+          {value}
+        </span>
+      </div>
+    </div>
+  )
+}
+
 function Swatches({ items }: { items: [string, string][] }) {
+  const primitiveMap = usePrimitiveReverseMap()
   return (
     <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
       {items.map(([name, varName]) => (
-        <div key={name} className="flex flex-col gap-1.5">
-          <div
-            className="border-border h-12 w-full rounded-md border"
-            style={{ background: `var(${varName})` }}
-          />
-          <div className="flex flex-col">
-            <span className="text-xs font-medium">{name}</span>
-            <span className="text-muted-foreground font-mono text-[10px]">{varName}</span>
-          </div>
-        </div>
+        <Swatch key={name} name={name} varName={varName} primitiveMap={primitiveMap} />
       ))}
     </div>
   )
