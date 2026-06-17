@@ -1,114 +1,91 @@
-# Using the design system — operating guide
+# Using the eFounders design system
 
-The practical manual. Three things: what you set up once, what to check on each
-project, and the prompts/skills to make prototypes from a codebase.
+One shared, brand-agnostic base + an AI-native process. Each project keeps its own
+skin; the method is the same everywhere. This guide has three parts:
 
-The goal: **a design system that runs on Claude to build prototypes from the
-codebase**, on every startup — same method, different brands.
-
----
-
-## 1. Set up once (your machine)
-
-- **Claude Code** + **Node** — you already have these.
-- **Design skills** already in Claude: `design-prototype`, `design-frame`,
-  `nelly-design-critique`, `design-system-creation`. Nothing new to install.
-- **The shared base** = this `@efounders` registry. Maintain it once; every project
-  consumes it. (Run the storybook locally with `npm run dev`; publish it with
-  `npm run registry:build` + deploy so projects can `shadcn add @efounders/…`.)
-
-You do **not** need to become a registry engineer. The plumbing is set up once.
+1. **Step 0 — Is your DS AI-native?** (understand it, audit your project)
+2. **Onboard a project** (new company · existing company with a DS)
+3. **How you use it day to day** (light for now — to expand)
 
 ---
 
-## 2. Check on each project (the checklist)
+## 1 · Step 0 — Is your DS AI-native?
 
-For a project to "have a design system that runs on Claude", it needs **3 boxes**:
+An **AI-native design system** is one an agent can *read and build from reliably*:
+the brand lives in machine-readable tokens, the rules live where the agent reads
+(the code + a `CLAUDE.md`), components are real and reused, and the system is a
+versioned source of truth — not copied per project.
 
-- [ ] **A `CLAUDE.md` at the root** — the file Claude reads automatically. It points
-  to the tokens, the components, and the rules. **This is the box that matters.**
-  Use `templates/CLAUDE.md` from this repo as the drop-in starting point.
-- [ ] **Tokens** in one clear file (`styles.css` / `globals.css`) = the project's brand.
-- [ ] **Components** available (shadcn + the project's bespoke ones).
+**Audit any project with one command:** run `/ds-audit` in a Claude Code
+conversation inside the repo. It inspects the codebase, scores the criteria below
+with evidence, classifies the project, and returns a prioritized plan.
 
-If the 3 boxes are checked → Claude prototypes on-brand, from the code, without you
-re-explaining. If `CLAUDE.md` is missing, that's ~90% of the problem.
+### The checklist (what `/ds-audit` scores)
 
-A project with a mature DS of its own (its own tokens + components) does **not** need
-the base's component code — only the conventions layer (`CLAUDE.md` + rules).
+**A · Tokens** — semantic, named by role (`--primary`, `--muted-foreground`); intent on
+each (use for / not for); light + dark; brand isolated to a few knobs; shadcn contract respected.
+**B · Conventions** — a `CLAUDE.md` at the root pointing to tokens/components/rules
+(*highest-leverage item*); component specs the agent can read; the 5 states documented; hard
+rules explicit (one primary/screen, one icon library, never invent a value).
+**C · Components & storybook** — real reused components (no `Button`/`PrimaryButton` sprawl);
+a living storybook that renders the *real* components (no drift).
+**D · Distribution** — a versioned source projects *consume* (registry), not copy; brand-agnostic base.
+**E · Verification** — a deterministic gate on PRs; a component audit; prototyping skills that build from the codebase.
 
----
-
-## 3. Prompts & skills (to make a prototype)
-
-Open a Claude Code conversation **inside the project**, then:
-
-| You want… | You type | What it does |
-|---|---|---|
-| a clickable multi-screen prototype | `/design-prototype an onboarding flow, 3 screens` | reads the project's DS, builds a navigable on-brand prototype |
-| one polished screen | `/design-frame the settings screen` | a single-screen mockup from the DS |
-| a UX review | `/nelly-design-critique` + screenshots + goal | scored review against named UX frameworks |
-| start a DS on a project that has none | `/design-system-creation` | creates tokens + components + `CLAUDE.md` |
-
-The skills reuse the design system found in the current directory, so output comes
-out on-brand **automatically** — because of the `CLAUDE.md`.
+> Most boxes checked → an agent builds on-brand from your code with little hand-holding.
 
 ---
 
-## What is unified (and what isn't)
+## 2 · Onboard a project — what do I do?
 
-- **Unified**: the *method* — token contract, component vocabulary, rules,
-  `CLAUDE.md` structure, the skills. The skeleton.
-- **Per project**: the *brand* — colors, font, radius, density. The skin.
+### A · New company (greenfield)
 
-Set the brand in one place: `--brand-*`, `--font-base`, `--radius`, `--text-base`.
-Every component follows. Rose, Dona, Haze: same method, different skins.
+1. **Ensure shadcn + Tailwind v4** in the project (`npx shadcn@latest init` if needed).
+2. **Point at the registry** — add to `components.json`:
+   ```json
+   "registries": { "@efounders": "https://ds-registry-five.vercel.app/r/{name}.json" }
+   ```
+3. **Pull the base** — `shadcn add @efounders/theme` (the token structure) + any bespoke
+   you need (`tag`, `stat`, `filter-bar`, `chat-message`, `chat-composer`, `chat-typing`).
+   Standard components come from shadcn (`shadcn add button input table …`) and are branded
+   automatically by the theme.
+4. **Set the brand** — edit `--brand-*`, `--font-base`, `--radius`, `--text-base` in the
+   tokens file. Everything follows.
+5. **Drop in `CLAUDE.md`** — copy `templates/CLAUDE.md`, fill the paths + tone.
+6. **Confirm + build** — run `/ds-audit` to check you're AI-native, then `/design-prototype …`.
+
+### B · Existing company that already has a DS
+
+The goal is to *wire it in*, not rip it out.
+
+1. **Run `/ds-audit`** in their repo → verdict + plan. Keep what works.
+2. **Add the conventions layer** (usually the missing piece) — a `CLAUDE.md` pointing to
+   *their* tokens, components, and rules (adapt `templates/CLAUDE.md`). This alone makes their
+   DS AI-native.
+3. **Align token naming to the shadcn contract** where it's cheap (`--primary`, `--background`,
+   `--ring`…) so shadcn components plug in — **keep their brand values**.
+4. **Fix the storybook** if it's a static mirror → point it at the real components.
+5. **Add the deterministic gate** if missing.
+6. **Consume only what they lack** from `@efounders` (a bespoke component), never a fork.
+   Re-run `/ds-audit` to confirm.
 
 ---
 
-## Is your DS AI-native? — checklist
+## 3 · How you use it day to day  *(light — to expand)*
 
-An AI-native design system is one an agent can **read and build from reliably**.
+In a Claude Code conversation **inside the project**:
 
-**Tokens**
-- [ ] Colors/spacing/radius are semantic tokens named by role (`--primary`, `--muted-foreground`…), not raw hex in the code
-- [ ] Light + dark both defined
-- [ ] Brand set in one place (`--brand-*`, font, radius, density), overridable per project
+| You want… | You type |
+|---|---|
+| a clickable multi-screen prototype | `/design-prototype [what you want]` |
+| one polished screen | `/design-frame [the screen]` |
+| a UX review | `/nelly-design-critique` + screenshots + goal |
+| a DS health check | `/ds-audit` |
 
-**Readable by the agent**
-- [ ] A `CLAUDE.md` at the root points to tokens, components, and rules
-- [ ] Components have specs (for / not for, variants, states) the agent can read
-- [ ] Rules are explicit: the 5 states, one primary per screen, one icon library, never invent a value
+**Roles** — *PM* spins a prototype to align (`/design-prototype`); *Designer* maintains the
+base, sets the brand, refines screens, reviews; *Dev* pulls components and Claude codes
+on-brand from the `CLAUDE.md`. Same system, three altitudes — nobody re-explains it.
 
-**Components & storybook**
-- [ ] Components are real and reused (shadcn-based), not re-described
-- [ ] A living storybook renders the real components (can't drift)
+---
 
-**Distribution**
-- [ ] Consumed from a versioned source (registry), not copied per project
-- [ ] Updating = re-pull, not re-paste
-
-**Verification (ideal)**
-- [ ] A deterministic gate catches hardcoded values / unknown tokens (`ds-check` on PRs)
-- [ ] Prototyping skills generate from the codebase (`design-prototype`, `design-frame`)
-
-> Most boxes checked → an agent builds on-brand from your code with little hand-holding. The `CLAUDE.md` is the highest-leverage box.
-
-## How Dev / Designer / PM use it together
-
-The shared base + `CLAUDE.md` are the common language: same tokens, components, rules — the three roles work in the same system, each at their altitude.
-
-| Role | What they use | What they produce |
-|---|---|---|
-| **PM** | `/design-prototype` + storybook as reference | a clickable prototype of a flow to align stakeholders, fast, no hand-off |
-| **Designer** | maintains the base; sets the project brand; `/design-frame`, `/design-prototype`, `/nelly-design-critique` | direction & brand, explored screens, quality review |
-| **Dev** | `shadcn add @efounders/…`; Claude reads `CLAUDE.md` → on-brand code; the `ds-check` gate | the real product, consistent with the DS |
-
-**The loop**
-
-1. PM frames the problem → quick prototype to align (Claude + the DS).
-2. Designer sets direction & brand, refines key screens, reviews quality.
-3. Dev builds it; Claude reuses the DS components; the gate keeps it conformant.
-4. Review (designer / critique) → ship.
-
-Nobody re-explains the system at each step — it's written where each person (and the agent) already works.
+*Repo: eFounders/ds-registry · Storybook: https://ds-registry-five.vercel.app · maintained once, consumed everywhere.*
