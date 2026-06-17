@@ -1,0 +1,18 @@
+name: ds-check
+
+# Deterministic design-system gate: hardcoded colors / unknown tokens fail the PR.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  ds-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run ds-check
+        run: node scripts/ds-check.mjs
