@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chat-typing",
+  "title": "Typing indicator",
+  "description": "Three pulsing dots; respects prefers-reduced-motion.",
+  "files": [
+    {
+      "path": "registry/new-york/blocks/chat/typing-indicator.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Typing indicator — \"the assistant is writing\". Three pulsing dots.\n * Respects prefers-reduced-motion (animation disabled). Always interruptible\n * upstream (the composer shows Stop).\n */\nfunction TypingIndicator({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"typing-indicator\"\n      role=\"status\"\n      aria-label=\"Assistant is typing\"\n      className={cn(\n        \"bg-card text-muted-foreground inline-flex items-center gap-1 rounded-lg border px-3 py-2.5\",\n        className\n      )}\n      {...props}\n    >\n      {[0, 150, 300].map((delay) => (\n        <span\n          key={delay}\n          className=\"size-1.5 animate-bounce rounded-full bg-current opacity-60 motion-reduce:animate-none\"\n          style={{ animationDelay: `${delay}ms` }}\n        />\n      ))}\n    </div>\n  )\n}\n\nexport { TypingIndicator }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

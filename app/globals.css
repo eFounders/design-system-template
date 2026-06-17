@@ -1,0 +1,293 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   @theme inline — maps our semantic tokens to Tailwind v4 color
+   utilities. shadcn contract (--background, --primary…) + our
+   in-house extensions (states, feedback, tags). Values live in
+   :root / .dark below. Authored in hex, two tiers (primitives →
+   semantic), faithful to ~/Desktop/design-kit/design-system/tokens.css.
+   ============================================================ */
+@theme inline {
+  /* ---- shadcn contract ---- */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ---- in-house extensions (efounders) ---- */
+  --color-surface-sunken: var(--surface-sunken);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-link: var(--link);
+  --color-border-strong: var(--border-strong);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-primary-subtle: var(--primary-subtle);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-subtle: var(--destructive-subtle);
+  --color-success: var(--success);
+  --color-success-subtle: var(--success-subtle);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-subtle: var(--info-subtle);
+  --color-info-foreground: var(--info-foreground);
+
+  /* ---- type & radius ---- */
+  --font-sans: var(--font-base);
+  --font-mono: var(--font-mono);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+}
+
+:root {
+  /* ===========================================================
+     TIER 1 — PRIMITIVES (do not use directly; semantic only)
+     =========================================================== */
+  --neutral-0:   #ffffff;
+  --neutral-50:  #fafafa;
+  --neutral-100: #f4f4f5;
+  --neutral-200: #e4e4e7;
+  --neutral-300: #d4d4d8;
+  --neutral-400: #a1a1aa;
+  --neutral-500: #71717a;
+  --neutral-600: #52525b;
+  --neutral-700: #3f3f46;
+  --neutral-800: #27272a;
+  --neutral-900: #18181b;
+  --neutral-950: #09090b;
+
+  /* Brand — still the default (Tailwind blue). Swap here to set the eFounders brand. */
+  --brand-50:  #eff6ff; --brand-100: #dbeafe; --brand-200: #bfdbfe; --brand-300: #93c5fd;
+  --brand-400: #60a5fa; --brand-500: #3b82f6; --brand-600: #2563eb; --brand-700: #1d4ed8;
+  --brand-800: #1e40af; --brand-900: #1e3a8a; --brand-950: #172554;
+
+  /* Feedback ramps */
+  --green-50: #f0fdf4; --green-500: #22c55e; --green-600: #16a34a;
+  --red-50:   #fef2f2; --red-500:   #ef4444; --red-600:   #dc2626;
+  --amber-50: #fffbeb; --amber-400: #fbbf24; --amber-500: #f59e0b;
+  --sky-50:   #f0f9ff; --sky-500:   #0ea5e9; --sky-600:   #0284c7;
+
+  /* ===========================================================
+     TIER 2 — SEMANTIC. LIGHT.
+     =========================================================== */
+  --background:         var(--neutral-0);
+  --foreground:         var(--neutral-950);
+  --card:               var(--neutral-0);
+  --card-foreground:    var(--neutral-950);
+  --popover:            var(--neutral-0);
+  --popover-foreground: var(--neutral-950);
+  --surface-sunken:     var(--neutral-100);
+  --overlay:            rgba(9, 9, 11, 0.45);
+
+  --muted:            var(--neutral-100);
+  --muted-foreground: var(--neutral-500);
+  --foreground-subtle:var(--neutral-400);
+  --link:             var(--brand-600);
+
+  --border:        var(--neutral-200);
+  --input:         var(--neutral-200);
+  --ring:          var(--brand-600);
+  --border-strong: var(--neutral-300);
+
+  --primary:            var(--brand-600);
+  --primary-foreground: var(--neutral-0);
+  --primary-hover:      var(--brand-700);
+  --primary-active:     var(--brand-800);
+  --primary-subtle:     var(--brand-50);
+
+  --secondary:            var(--neutral-100);
+  --secondary-foreground: var(--neutral-900);
+  --secondary-hover:      var(--neutral-200);
+  --accent:               var(--neutral-100);
+  --accent-foreground:    var(--neutral-900);
+
+  --destructive:            var(--red-600);
+  --destructive-foreground: var(--neutral-0);
+  --destructive-subtle:     var(--red-50);
+  --success:            var(--green-600);
+  --success-subtle:     var(--green-50);
+  --success-foreground: var(--neutral-0);
+  --warning:            var(--amber-500);
+  --warning-subtle:     var(--amber-50);
+  --warning-foreground: var(--neutral-950);
+  --info:            var(--sky-600);
+  --info-subtle:     var(--sky-50);
+  --info-foreground: var(--neutral-0);
+
+  /* Tags / labels (decorative, non-semantic) */
+  --tag-gray-bg:   var(--neutral-100); --tag-gray-fg:   var(--neutral-700);
+  --tag-red-bg:    #fee2e2;            --tag-red-fg:    #b91c1c;
+  --tag-orange-bg: #ffedd5;            --tag-orange-fg: #c2410c;
+  --tag-amber-bg:  #fef3c7;            --tag-amber-fg:  #b45309;
+  --tag-green-bg:  #dcfce7;            --tag-green-fg:  #15803d;
+  --tag-teal-bg:   #ccfbf1;            --tag-teal-fg:   #0f766e;
+  --tag-blue-bg:   #dbeafe;            --tag-blue-fg:   #1d4ed8;
+  --tag-violet-bg: #ede9fe;            --tag-violet-fg: #6d28d9;
+  --tag-pink-bg:   #fce7f3;            --tag-pink-fg:   #be185d;
+
+  --state-hover:         rgba(9, 9, 11, 0.04);
+  --state-active:        rgba(9, 9, 11, 0.08);
+  --disabled-foreground: var(--neutral-400);
+
+  /* Charts & sidebar — shadcn contract (kept from template baseline) */
+  --chart-1: #2563eb; --chart-2: #16a34a; --chart-3: #f59e0b; --chart-4: #9333ea; --chart-5: #dc2626;
+  --sidebar:                     var(--neutral-50);
+  --sidebar-foreground:          var(--neutral-950);
+  --sidebar-primary:             var(--brand-600);
+  --sidebar-primary-foreground:  var(--neutral-0);
+  --sidebar-accent:              var(--neutral-100);
+  --sidebar-accent-foreground:   var(--neutral-900);
+  --sidebar-border:              var(--neutral-200);
+  --sidebar-ring:                var(--brand-600);
+
+  /* ===========================================================
+     TYPOGRAPHY — base 14px (dense) / 16px (large)
+     =========================================================== */
+  --font-base: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --text-2xs: 10px; --text-xs: 12px; --text-sm: 13px; --text-base: 14px;
+  --text-md: 16px;  --text-lg: 20px; --text-xl: 28px;
+  --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600;
+  --leading: 1.5; --leading-tight: 1.4;
+
+  /* SPACING — 4px grid */
+  --space-px: 1px;  --space-0_5: 2px;
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 20px;  --space-6: 24px;  --space-7: 28px;  --space-8: 32px;
+  --space-10: 40px; --space-12: 48px; --space-16: 64px;
+
+  /* RADIUS */
+  --radius: 8px;
+  --radius-xs: 4px; --radius-sm: 6px; --radius-md: var(--radius);
+  --radius-lg: 12px; --radius-xl: 16px; --radius-full: 9999px;
+
+  /* ELEVATION */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+  /* MOTION */
+  --duration-fast: 120ms; --duration-base: 150ms;
+  --easing: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ICONS */
+  --icon-sm: 16px; --icon-md: 20px; --icon-lg: 24px; --icon-stroke: 1.5px;
+}
+
+/* ===========================================================
+   DARK — remaps semantic tokens. Activate via class `dark`.
+   =========================================================== */
+.dark {
+  --background:           var(--neutral-950);
+  --foreground:           var(--neutral-50);
+  --card:                 var(--neutral-950);
+  --card-foreground:      var(--neutral-50);
+  --popover:              var(--neutral-900);
+  --popover-foreground:   var(--neutral-50);
+  --surface-sunken:       var(--neutral-900);
+  --overlay:              rgba(0, 0, 0, 0.6);
+
+  --muted:                var(--neutral-800);
+  --muted-foreground:     var(--neutral-400);
+  --foreground-subtle:    var(--neutral-500);
+  --link:                 var(--brand-400);
+
+  --border:        var(--neutral-800);
+  --input:         var(--neutral-800);
+  --ring:          var(--brand-500);
+  --border-strong: var(--neutral-700);
+
+  --primary:            var(--brand-500);
+  --primary-foreground: var(--neutral-950);
+  --primary-hover:      var(--brand-400);
+  --primary-active:     var(--brand-300);
+  --primary-subtle:     var(--brand-950);
+
+  --secondary:            var(--neutral-800);
+  --secondary-foreground: var(--neutral-50);
+  --secondary-hover:      var(--neutral-700);
+  --accent:               var(--neutral-800);
+  --accent-foreground:    var(--neutral-50);
+
+  --destructive:            var(--red-500);
+  --destructive-foreground: var(--neutral-50);
+  --destructive-subtle:     #450a0a;
+  --success:            var(--green-500);
+  --success-subtle:     #052e16;
+  --success-foreground: var(--neutral-950);
+  --warning:            var(--amber-400);
+  --warning-subtle:     #422006;
+  --warning-foreground: var(--neutral-950);
+  --info:            var(--sky-500);
+  --info-subtle:     #082f49;
+  --info-foreground: var(--neutral-950);
+
+  --tag-gray-bg:   var(--neutral-800); --tag-gray-fg:   var(--neutral-300);
+  --tag-red-bg:    #450a0a;            --tag-red-fg:    #fca5a5;
+  --tag-orange-bg: #431407;            --tag-orange-fg: #fdba74;
+  --tag-amber-bg:  #422006;            --tag-amber-fg:  #fcd34d;
+  --tag-green-bg:  #052e16;            --tag-green-fg:  #86efac;
+  --tag-teal-bg:   #042f2e;            --tag-teal-fg:   #5eead4;
+  --tag-blue-bg:   #172554;            --tag-blue-fg:   #93c5fd;
+  --tag-violet-bg: #2e1065;            --tag-violet-fg: #c4b5fd;
+  --tag-pink-bg:   #500724;            --tag-pink-fg:   #f9a8d4;
+
+  --state-hover:         rgba(255, 255, 255, 0.06);
+  --state-active:        rgba(255, 255, 255, 0.10);
+  --disabled-foreground: var(--neutral-600);
+
+  --chart-1: #60a5fa; --chart-2: #22c55e; --chart-3: #fbbf24; --chart-4: #c084fc; --chart-5: #f87171;
+  --sidebar:                     var(--neutral-900);
+  --sidebar-foreground:          var(--neutral-50);
+  --sidebar-primary:             var(--brand-500);
+  --sidebar-primary-foreground:  var(--neutral-950);
+  --sidebar-accent:              var(--neutral-800);
+  --sidebar-accent-foreground:   var(--neutral-50);
+  --sidebar-border:              var(--neutral-800);
+  --sidebar-ring:                var(--brand-500);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: var(--text-base);
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chat-composer",
+  "title": "Composer",
+  "description": "Prompt input: Enter to send, Shift+Enter newline, Send becomes Stop while generating.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/blocks/chat/composer.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ArrowUp, Square } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/ui/button\"\n\n/**\n * Composer — write and send a prompt.\n * Enter = send, Shift+Enter = newline. The Send button becomes Stop while\n * generating. Disabled state must explain why (e.g. quota reached).\n */\nfunction Composer({\n  placeholder = \"Message the assistant…\",\n  generating = false,\n  disabled = false,\n  onSend,\n  onStop,\n  className,\n}: {\n  placeholder?: string\n  generating?: boolean\n  disabled?: boolean\n  onSend?: (value: string) => void\n  onStop?: () => void\n  className?: string\n}) {\n  const [value, setValue] = React.useState(\"\")\n\n  function send() {\n    const v = value.trim()\n    if (!v || disabled) return\n    onSend?.(v)\n    setValue(\"\")\n  }\n\n  function onKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {\n    if (e.key === \"Enter\" && !e.shiftKey) {\n      e.preventDefault()\n      send()\n    }\n  }\n\n  return (\n    <div\n      data-slot=\"composer\"\n      className={cn(\n        \"bg-card focus-within:border-ring focus-within:ring-ring/50 flex items-end gap-2 rounded-lg border p-2 transition-[color,box-shadow] focus-within:ring-[3px]\",\n        disabled && \"opacity-60\",\n        className\n      )}\n    >\n      <textarea\n        rows={1}\n        value={value}\n        disabled={disabled}\n        placeholder={placeholder}\n        onChange={(e) => setValue(e.target.value)}\n        onKeyDown={onKeyDown}\n        className=\"placeholder:text-muted-foreground max-h-40 flex-1 resize-none bg-transparent px-1.5 py-1.5 text-sm outline-none disabled:cursor-not-allowed\"\n      />\n      {generating ? (\n        <Button size=\"icon\" variant=\"secondary\" onClick={onStop} aria-label=\"Stop\">\n          <Square className=\"size-3.5 fill-current\" />\n        </Button>\n      ) : (\n        <Button\n          size=\"icon\"\n          onClick={send}\n          disabled={disabled || !value.trim()}\n          aria-label=\"Send\"\n        >\n          <ArrowUp className=\"size-4\" />\n        </Button>\n      )}\n    </div>\n  )\n}\n\nexport { Composer }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

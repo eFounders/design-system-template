@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tag",
+  "title": "Tag",
+  "description": "Decorative non-semantic label using the --tag-* palette (9 hues). One hue = one category.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/ui/tag.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Tag — decorative, NON-semantic label (category, team, project, custom status).\n * The hue identifies; it does not mean \"error\" or \"success\" (that's Badge).\n * One hue = one category, stable over time. Uses the --tag-* token palette.\n */\nconst tagVariants = cva(\n  \"inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap\",\n  {\n    variants: {\n      hue: {\n        gray: \"bg-[var(--tag-gray-bg)] text-[var(--tag-gray-fg)]\",\n        red: \"bg-[var(--tag-red-bg)] text-[var(--tag-red-fg)]\",\n        orange: \"bg-[var(--tag-orange-bg)] text-[var(--tag-orange-fg)]\",\n        amber: \"bg-[var(--tag-amber-bg)] text-[var(--tag-amber-fg)]\",\n        green: \"bg-[var(--tag-green-bg)] text-[var(--tag-green-fg)]\",\n        teal: \"bg-[var(--tag-teal-bg)] text-[var(--tag-teal-fg)]\",\n        blue: \"bg-[var(--tag-blue-bg)] text-[var(--tag-blue-fg)]\",\n        violet: \"bg-[var(--tag-violet-bg)] text-[var(--tag-violet-fg)]\",\n        pink: \"bg-[var(--tag-pink-bg)] text-[var(--tag-pink-fg)]\",\n      },\n    },\n    defaultVariants: { hue: \"gray\" },\n  }\n)\n\nfunction Tag({\n  className,\n  hue,\n  dot = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof tagVariants> & {\n    /** show a leading color dot */\n    dot?: boolean\n  }) {\n  return (\n    <span data-slot=\"tag\" className={cn(tagVariants({ hue }), className)} {...props}>\n      {dot ? (\n        <span\n          aria-hidden\n          className=\"size-1.5 rounded-full bg-current opacity-70\"\n        />\n      ) : null}\n      {props.children}\n    </span>\n  )\n}\n\nexport { Tag, tagVariants }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
