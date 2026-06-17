@@ -80,6 +80,10 @@ Wire it in, don't rip it out.
 5. **Pull only what's missing** from the registry, never a fork.
 6. **Re-run `/ds-audit`** to confirm.
 
+**Either way — let Claude reach the registry:** run `shadcn mcp init --client claude` in
+the project. Claude Code then gets MCP tools to search / view / add from `@efounders`
+conversationally — it pulls the right component while building, no manual `shadcn add`.
+
 ## Step 2 — Use it day to day
 
 In a Claude Code conversation **inside the project**:

@@ -55,6 +55,9 @@ In a Claude Code conversation **inside this project**:
 These skills reuse the design system found in this directory, so output comes out
 on-brand automatically — because of this file.
 
+If the shadcn MCP is set up (`shadcn mcp init --client claude`), Claude can also search
+and add `@efounders` components directly — no manual `shadcn add` needed.
+
 ## Source of truth
 
 The tokens/components files are THE reference. A feature never silently changes a
