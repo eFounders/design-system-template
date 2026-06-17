@@ -16,9 +16,11 @@ the brand lives in machine-readable tokens, the rules live where the agent reads
 (the code + a `CLAUDE.md`), components are real and reused, and the system is a
 versioned source of truth — not copied per project.
 
-**Audit any project with one command:** run `/ds-audit` in a Claude Code
-conversation inside the repo. It inspects the codebase, scores the criteria below
-with evidence, classifies the project, and returns a prioritized plan.
+**Audit any project with one command:** point `/ds-audit` at a **git repo** — a
+GitHub repo (URL or `owner/repo`) it clones, or the repo you're already in. It
+inspects the codebase (always the repo, closest to the code — not loose local
+files), scores the criteria below with evidence, classifies the project, and
+returns a prioritized plan.
 
 ### The checklist (what `/ds-audit` scores)
 

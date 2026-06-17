@@ -11,10 +11,14 @@ Canonical reference: the **@efounders** registry (`https://ds-registry-five.verc
 
 ## How to run the audit
 
-1. **Locate the design system in the current project.** Look for: a tokens file (`globals.css`, `styles.css`, `tokens.css`, `tailwind.config`), `components.json` (shadcn), `components/ui/` or a bespoke components folder, a `CLAUDE.md`/`AGENTS.md`, a storybook/preview route, CI checks. Use Glob/Grep — do not assume.
-2. **Score each criterion below** as ✅ pass / 🟠 partial / ❌ missing, each with **evidence** (a `file:line` or a one-line observation). Never score from assumption — open the files.
-3. **Classify the project** into one of: *(a) no real DS yet*, *(b) has a DS but not AI-native*, *(c) AI-native with gaps*, *(d) solid*.
-4. **Return the report** (format below): the classification, the scored checklist, and a **prioritized action plan** — concrete next steps with the highest-leverage first.
+1. **Target the codebase — a git repo, not loose local files.** A design system lives in a repo, so audit the repo:
+   - Given a **GitHub repo** (a URL or `owner/repo`) → shallow-clone it and audit the clone: `gh repo clone <owner/repo> <tmp> -- --depth=1 --single-branch` (or `git clone --depth 1 <url> <tmp>`). Read from `<tmp>`; remove it when done.
+   - Run **inside a project** → confirm it's a git repo (`git rev-parse --is-inside-work-tree`) and audit the working tree.
+   - If the target isn't under git, flag it — "closest to the codebase" means the repo. Always note the **branch / commit** you audited.
+2. **Locate the design system** in that repo. Look for: a tokens file (`globals.css`, `styles.css`, `tokens.css`, `tailwind.config`), `components.json` (shadcn), `components/ui/` or a bespoke components folder, a `CLAUDE.md`/`AGENTS.md`, a storybook/preview route, CI checks. Use Glob/Grep — do not assume.
+3. **Score each criterion below** as ✅ pass / 🟠 partial / ❌ missing, each with **evidence** (a `file:line` or a one-line observation). Never score from assumption — open the files.
+4. **Classify the project** into one of: *(a) no real DS yet*, *(b) has a DS but not AI-native*, *(c) AI-native with gaps*, *(d) solid*.
+5. **Return the report** (format below): the repo + branch audited, the classification, the scored checklist, and a **prioritized action plan** — highest-leverage first.
 
 ## The checklist (score every item, with evidence)
 
