@@ -14,6 +14,7 @@ project, set your own brand on top, and Claude builds on-brand from it.
   highest-leverage file.
 - **Seed once, then you own it.** `shadcn add` writes the code *into your repo* — you own it. The registry is a starting point + an optional update channel, **not a runtime or build dependency**.
 - **The storybook shows the real components.** Your live reference — it can't drift.
+- **Figma leads while you explore; code leads once you build.** During DA exploration, Figma + Claude lead (you're searching the direction). The moment you create the design system, the **code becomes the source of truth** and Figma reflects it.
 
 ## Resources
 
@@ -60,6 +61,10 @@ prioritized plan.
 
 ### A · Starting a new project
 
+**Phase 0 — find the direction first (no code yet).** Moodboards in Figma → ask Claude to
+generate sample screens (*écrans types*) directly in Figma, iterate until a direction
+clicks. Figma leads here; there's no design system yet. **Once the DA is locked, wire it:**
+
 1. **Ensure shadcn + Tailwind v4** (`npx shadcn@latest init` if needed).
 2. **Point at the registry** — add the `@efounders` namespace in `components.json`,
    pointing to `https://ds-registry-five.vercel.app/r/{name}.json`.
@@ -97,6 +102,15 @@ source of truth; Figma reflects it** (code → Figma, never the reverse).
 3. **Code Connect** links each Figma component to its real code component → Dev Mode shows the actual code.
 
 Build it *from the code* with the Figma MCP (the `figma-generate-library` skill).
+
+**Across the project's life:** Figma *leads* while you explore the DA (no code yet); once
+the design system exists, the **code leads** and Figma reflects it. Then you can explore
+several **pistes in Figma**, validate with the team, and Code Connect round-trips the
+chosen one to code.
+
+**Figma pistes vs HTML protos:** Figma for visual / DA exploration + team buy-in; HTML
+protos (`/design-prototype`) for interactive flows + real data scenarios. Figma generation
+is token-heavy — dose it.
 
 **Already have a Figma DS on the project?** Treat it as a *reference to harvest*, not a
 base: regenerate the library from the code, fold any genuinely-better decisions from the
