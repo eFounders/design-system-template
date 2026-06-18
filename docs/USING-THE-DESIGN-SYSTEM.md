@@ -5,16 +5,17 @@ project, set your own brand on top, and Claude builds on-brand from it.
 
 > Notion version (with per-step sub-pages): https://app.notion.com/p/3821cc0bd5bc818986acd792a4490721
 
-## What to remember (the essentials)
+## The principles — what makes a design system AI-native
 
-- **The skeleton is shared, the brand is yours.** Set `--brand-*`, font, `--radius`,
-  density per project — every component follows.
-- **The agent reads `CLAUDE.md`.** A `CLAUDE.md` at the project root, pointing to the
-  tokens, components and rules, is what makes Claude build on-brand. The single
-  highest-leverage file.
-- **Seed once, then you own it.** `shadcn add` writes the code *into your repo* — you own it. The registry is a starting point + an optional update channel, **not a runtime or build dependency**.
-- **The storybook shows the real components.** Your live reference — it can't drift.
-- **Figma leads while you explore; code leads once you build.** During DA exploration, Figma + Claude lead (you're searching the direction). The moment you create the design system, the **code becomes the source of truth** and Figma reflects it.
+*General best practices, independent of any one solution.*
+
+- **Tokens named by intent.** Semantic tokens (`--primary`, `--muted-foreground`…) the agent reads to pick the right value — never a raw hex/px.
+- **As close to the code as possible.** The design system lives in the codebase — the source of truth — where the agent *and* the build read it, not in a doc that drifts.
+- **Real, reused components.** One canonical component per role; the agent reuses them, never reinvents.
+- **Conventions written where the agent reads.** A `CLAUDE.md`-style file carries the rules — when to use what, the 5 states, one primary per screen. *Prompts are instructions; the design system is the memory.*
+- **Figma reflects the code.** Generated / synced from the code; the code stays the source of truth (Figma only leads while you explore the direction).
+- **Consume, don't duplicate.** Distribute the system from one versioned source so projects stay in sync — copies drift.
+- **Enforce it.** A deterministic check fails the build on hardcoded values or unknown tokens.
 
 ## Resources
 
