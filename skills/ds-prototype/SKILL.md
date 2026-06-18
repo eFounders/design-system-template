@@ -1,51 +1,71 @@
 ---
 name: ds-prototype
-description: Build a functional, interactive multi-screen HTML prototype (working navigation, modals, forms, flows — no backend) that reuses THIS project's design system — the CSS-variable tokens, the shadcn + @efounders components, and the project's CLAUDE.md rules. Use when the user wants to "prototype", "build a clickable demo", "show a working flow", "mock up how X works". For a single screen, use ds-frame. Frontend-only, mock data, no prod. Output is a clickable file:// link.
+description: The single prototyping skill. Spec a feature like a PM, use THIS project's code/design-system 100% (CLAUDE.md + globals.css tokens + shadcn/@efounders components as the source of truth), propose several options, and output as HTML or as Figma screens — with design best practices (auto-layout, real components). Use whenever the user wants to prototype, mock up, design screens, "show options for X", "build a clickable demo", or design a single screen or a multi-screen flow. Frontend-only / mock data, no prod. Replaces ds-frame (one screen is just a 1-screen prototype).
 ---
 
-# ds-prototype — a clickable flow, on your system
+# ds-prototype — spec → options → HTML or Figma, 100% on your code
 
-Turn a product prompt into a self-contained, **interactive single HTML file** that reuses the
-project's design system: navigation works, modals open, forms validate, lists filter. State
-in memory (optionally `localStorage`). No backend, no prod data. For one screen, use `ds-frame`.
+One skill for all prototyping: a single screen or a full flow, in HTML or in Figma. It is
+**spec-driven**, uses the project's **real code as the source of truth**, and gives the team
+**options** to choose from.
 
-**Source of truth = the code.** It's a frontend exploration aligned to the project's real
-tokens and components — it never invents its own system, and explores with mock data so it's
-decoupled from production.
+## 1 · Spec the feature (PM lens) — interview briefly
 
-## Pre-flight — locate the design system (this project's shape)
+Before designing, get a lightweight PM spec. Fill from the prompt, then ask only the
+highest-leverage question(s) (2–3 options + open), restate in a few bullets, and proceed:
 
-Read, in the current working directory:
-- **`CLAUDE.md`** (root) — conventions: tokens path, components, hard rules, tone. *Read it first.*
-- **Tokens**: `app/globals.css` / `src/styles.css` / `tokens.css` — the CSS custom properties. Extract verbatim.
-- **Components**: `components/ui/*`, `registry/**`, or the project's component dir (shadcn + bespoke). Read a few to match real class names / structure.
-- A **storybook route** if present — the canonical reference.
+- **Objective / JTBD** — what problem, for whom, what does success look like.
+- **User + context** — who, when, what they're trying to do.
+- **Scope** — one screen, or the hero flow (3–5 screens); the must-haves.
+- **Benchmark (optional, light)** — 1–3 patterns from comparable products to ground the
+  options. Use only if it sharpens the direction; don't over-research.
 
-**No design system in this project?** Run **`/ds-bootstrap`** first, then come back.
-**Missing a component?** Pull from `@efounders` (`shadcn add @efounders/<name>` / shadcn MCP)
-or compose from primitives and note it — never reinvent.
+Bias to action: a sharp spec + sensible defaults beats a long question list.
 
-## Align on the spec (one question max)
+## 2 · Read the design system — the code is the source of truth (100%)
 
-Fill: product/feature, primary user + job-to-be-done, the 3–5 screens, the **one hero flow**
-to demonstrate flawlessly, and scope boundaries (what's out). If one high-leverage gap would
-make it useless, ask **one** focused question (2–3 options + open). Otherwise restate the spec
-in 4–5 bullets and build. Bias to action; 3–5 screens is usually right.
+In the current project, read: **`CLAUDE.md`** (conventions, rules, tone), the **tokens**
+(`app/globals.css` / `src/styles.css` / `tokens.css` — CSS custom properties), and the **real
+components** (`components/ui/*`, `registry/**` — shadcn + `@efounders` bespoke). Match the
+real components exactly.
 
-## Build
+- **Use the real components.** Missing one? Pull it from `@efounders` (`shadcn add
+  @efounders/<name>` / shadcn MCP). If it genuinely doesn't exist, **say so explicitly** —
+  compose from primitives and flag it as a new component to add to the DS. Never silently fake one.
+- **No design system in this project?** Run **`/ds-bootstrap`** first.
 
-Single file `prototype-<slug>.html` in the project root.
+## 3 · Propose options
 
-- **Tokens, not literals.** Project's CSS-variable tokens on `:root`; everything references `var(--…)`.
-- **Match the real components** (shadcn + bespoke) — same structure/variants/states. Don't invent.
-- **Real interactivity**: every primary CTA does something visible (create appends, delete
-  removes, filter filters, tabs switch). Hash routing (`#/…`) so back/forward + refresh work.
-- **Honor `CLAUDE.md`**: the 5 states, one primary per screen, one icon library, no hardcoded values.
-- **Mock data, no prod.** Realistic domain seed; optional `localStorage` + a "Reset" button.
-- **No external runtime deps** (no CDN/React/Tailwind); Google Font only if the DS specifies one.
+Give **2–3 distinct directions** for the feature (different layouts / IA / emphasis) — each a
+real take, not a variant of one. One line of trade-offs per option, so the team can pick.
 
-## Deliver
+## 4 · Output — HTML or Figma
 
-`realpath` the file, then output `**[Open prototype →](file:///absolute/path/prototype-<slug>.html)**`
-+ a 3–5 line summary (screens, the hero flow to try, what's stubbed/out of scope).
-Write the file, return the link — never dump the HTML in chat.
+Ask which surface (or infer from the request):
+
+**A · HTML** — fast, interactive, prod-free.
+- Single self-contained file(s); tokens on `:root`; every value via `var(--…)`.
+- Real component classes/structure; mock data (no prod); hash routing for flows; no external
+  runtime deps (Google Font only if the DS specifies one).
+
+**B · Figma** — visual, team-facing. Generate via the **Figma MCP** (the `figma-generate-design`
+/ `use_figma` skills). **Best practices, non-negotiable:**
+- **Auto-layout everywhere** — no absolute positioning.
+- **Use the real library components** (linked to code via Code Connect). If one isn't in the
+  library, **don't fake it**: compose from existing + state clearly it's a new component to add.
+- **Variables = tokens** — Figma variable names match the token names exactly.
+- Clean layer names; **prefix exploration/option frames with `_wip/`** so the MCP skips them later.
+- **Code stays the source of truth; Figma reflects it.**
+
+## 5 · Deliver + iterate
+
+- HTML → `**[Open →](file:///absolute/path/…)**`. Figma → the Figma link.
+- A short summary **per option** (what it is, trade-offs, what to try).
+- Iterate on the option the team picks. Never dump HTML/code in chat — write the file / create
+  the Figma frames, return the link.
+
+## Rules
+- **Code = source of truth**, always. Figma reflects it, never the reverse.
+- **Real components only**; specify explicitly when something must be invented.
+- **Mock data, no prod** — explore any state freely.
+- **Honor `CLAUDE.md`**: the 5 states, one primary action per screen, one icon library, tokens-only.
