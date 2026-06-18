@@ -10,5 +10,39 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "status": "stable",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "value",
+        "type": "ReactNode",
+        "required": true
+      },
+      {
+        "name": "delta",
+        "type": "string"
+      },
+      {
+        "name": "trend",
+        "type": "up|down|neutral"
+      }
+    ],
+    "tokens": [
+      "--muted-foreground",
+      "--foreground",
+      "--success",
+      "--destructive"
+    ],
+    "rules": [
+      "3–4 per row max",
+      "never a pie chart"
+    ]
+  },
+  "docs": "https://github.com/eFounders/ds-registry/blob/main/docs/COMPONENTS.md#stat",
   "type": "registry:ui"
 }

@@ -13,5 +13,35 @@
       "type": "registry:ui"
     }
   ],
+  "meta": {
+    "status": "stable",
+    "props": [
+      {
+        "name": "hue",
+        "type": "gray|red|orange|amber|green|teal|blue|violet|pink",
+        "default": "gray"
+      },
+      {
+        "name": "dot",
+        "type": "boolean",
+        "default": "false"
+      }
+    ],
+    "tokens": [
+      "--tag-{hue}-bg",
+      "--tag-{hue}-fg"
+    ],
+    "composition": {
+      "role": "inline label"
+    },
+    "related": [
+      "badge"
+    ],
+    "rules": [
+      "decorative only — never a semantic status (use Badge)",
+      "one hue = one category"
+    ]
+  },
+  "docs": "https://github.com/eFounders/ds-registry/blob/main/docs/COMPONENTS.md#tag",
   "type": "registry:ui"
 }

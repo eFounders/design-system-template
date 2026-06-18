@@ -10,5 +10,23 @@
       "type": "registry:component"
     }
   ],
+  "meta": {
+    "status": "beta",
+    "props": [],
+    "tokens": [
+      "--card",
+      "--border",
+      "--muted-foreground"
+    ],
+    "related": [
+      "chat-message",
+      "chat-composer"
+    ],
+    "rules": [
+      "respects prefers-reduced-motion",
+      "always interruptible (composer shows Stop)"
+    ]
+  },
+  "docs": "https://github.com/eFounders/ds-registry/blob/main/docs/COMPONENTS.md#chat-typing",
   "type": "registry:component"
 }

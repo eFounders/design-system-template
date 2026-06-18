@@ -16,5 +16,40 @@
       "type": "registry:component"
     }
   ],
+  "meta": {
+    "status": "beta",
+    "props": [
+      {
+        "name": "filters",
+        "type": "string[]"
+      },
+      {
+        "name": "activeFilters",
+        "type": "{id,label}[]"
+      },
+      {
+        "name": "resultCount",
+        "type": "number"
+      },
+      {
+        "name": "onAddFilter / onRemoveFilter / onClearAll",
+        "type": "callbacks"
+      }
+    ],
+    "tokens": [
+      "--secondary",
+      "--primary-subtle",
+      "--primary",
+      "--accent"
+    ],
+    "related": [
+      "table"
+    ],
+    "rules": [
+      "an active filter is always visible and removable",
+      "'no results' ≠ 'no data'"
+    ]
+  },
+  "docs": "https://github.com/eFounders/ds-registry/blob/main/docs/COMPONENTS.md#filter-bar",
   "type": "registry:component"
 }

@@ -10,5 +10,37 @@
       "type": "registry:component"
     }
   ],
+  "meta": {
+    "status": "beta",
+    "props": [
+      {
+        "name": "role",
+        "type": "user|assistant",
+        "default": "assistant"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "timestamp",
+        "type": "string"
+      }
+    ],
+    "tokens": [
+      "--accent",
+      "--card",
+      "--border",
+      "--muted-foreground"
+    ],
+    "composition": {
+      "livesIn": "a chat container"
+    },
+    "related": [
+      "chat-composer",
+      "chat-typing"
+    ]
+  },
+  "docs": "https://github.com/eFounders/ds-registry/blob/main/docs/COMPONENTS.md#chat-message",
   "type": "registry:component"
 }

@@ -1,0 +1,26 @@
+# eFounders Design System
+
+> The shared, brand-agnostic design-system base. Projects consume it via shadcn; the
+> code is the source of truth. This file tells an AI agent where everything is.
+
+## Start here
+- How to use it: docs/USING-THE-DESIGN-SYSTEM.md (setup, onboarding, daily use)
+- Conventions template: templates/CLAUDE.md (drop into a project so the agent builds on-brand)
+
+## Tokens & components
+- Tokens (the contract): app/globals.css — semantic shadcn tokens + in-house extensions,
+  two tiers (primitives → semantic), light + dark.
+- Component specs (agent-readable): docs/COMPONENTS.md — token intent + a fiche per bespoke component.
+- Component code: registry/new-york/ — standard shadcn (themed) + bespoke (tag, stat, filter-bar, chat-*).
+- Storybook (live reference): https://ds-registry-five.vercel.app
+
+## Registry (machine-readable)
+- Catalog: registry.json. Built items: public/r/*.json.
+- Each built item carries a `meta` contract: status, props, variants, composition rules, related.
+- Consume: `shadcn add @efounders/<name>` — registry URL https://ds-registry-five.vercel.app/r/{name}.json
+- Query from an agent: the shadcn MCP (`shadcn mcp init --client claude`).
+
+## Checks
+- DS conformance gate: scripts/ds-check.mjs (`npm run ds-check`) + .github/workflows/ds-check.yml —
+  hardcoded colors / unknown tokens fail the PR.
+- Audit any repo's AI-readiness: the `/ds-audit` skill.
