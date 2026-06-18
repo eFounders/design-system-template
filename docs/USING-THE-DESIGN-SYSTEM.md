@@ -112,10 +112,11 @@ chosen one to code.
 scenarios, fast) **or Figma** (visual / DA exploration + team buy-in). Figma generation is
 token-heavy — dose it.
 
-**Already have a Figma DS on the project?** Treat it as a *reference to harvest*, not a
-base: regenerate the library from the code, fold any genuinely-better decisions from the
-old file back into the code (they reappear in the new Figma), then archive the old file.
-Never keep two competing sources.
+**Already have a (messy) Figma DS?** Don't merge a clean library into it — that works badly
+(duplicate components, broken instances). **Generate a fresh** one from the code, **re-link
+the screens** to the new components, then **retire the legacy** page. *(Optional: fold a
+genuinely-better old decision into the code first, so it flows into the fresh Figma.)* Run
+**`/ds-figma`** for this.
 
 ### Day to day  *(still being refined)*
 
