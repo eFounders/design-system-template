@@ -1,6 +1,6 @@
 ---
 name: ds-bootstrap
-description: Bootstrap a project's design system from the @efounders base once a DA (art direction) is chosen — Phase 1. Use when the user says "create the design system for this project", "make me a perfect DS", "set up the DS from @efounders", "wire the design system here", or right after DA exploration. Seeds the @efounders skeleton, applies the project's brand, drops the conventions (CLAUDE.md, ds-check gate, llms.txt, component specs), generates first screens, and sets up the Figma bridge — with the code as the single source of truth. Distinct from the generic design-system-creation skill: this one starts from the shared @efounders base, not from scratch.
+description: Bootstrap a project's design system from the @efounders base once a DA (art direction) is chosen — Phase 1. Use when the user says "create the design system for this project", "make me a perfect DS", "set up the DS from @efounders", "wire the design system here", or right after DA exploration. Seeds the @efounders skeleton, applies the project's brand, drops the conventions (CLAUDE.md, ds-check gate, llms.txt, component specs), generates first screens, and sets up the Figma bridge — with the code as the single source of truth. Unlike a generic from-scratch bootstrapper, this one starts from the shared @efounders base.
 ---
 
 # ds-bootstrap — turn a chosen DA into a wired, on-brand design system

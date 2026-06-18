@@ -68,7 +68,7 @@ A · Tokens
 
 ## Tailor the plan to the verdict
 
-- **(a) No DS yet** → bootstrap: pull the @efounders base (`shadcn add @efounders/theme`), set the project brand, drop in the `CLAUDE.md` template. Consider `/design-system-creation`.
+- **(a) No DS yet** → bootstrap with **`/ds-bootstrap`** (seeds the @efounders base + applies the project's brand + drops the conventions).
 - **(b) Has a DS, not AI-native** → the gap is usually the **conventions layer**: add a `CLAUDE.md` pointing to the existing tokens/components, write component specs, make the storybook render real components, add the gate. Don't rebuild what works.
 - **(c) AI-native with gaps** → close the specific failed items; wire the gate; align token naming to the shadcn contract.
 - **(d) Solid** → keep it consuming the versioned base; only maintain.
