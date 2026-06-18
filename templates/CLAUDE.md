@@ -48,8 +48,7 @@ Components and patterns follow these automatically — do not retouch them per f
 ## How to prototype from this codebase
 
 In a Claude Code conversation **inside this project**:
-- Clickable multi-screen prototype → `/design-prototype [what you want]`
-- A single polished screen → `/design-frame [the screen]`
+- Prototype a screen or a flow, HTML or Figma → `/ds-prototype [what you want]`
 - UX review → `/nelly-design-critique` + screenshots + goal
 
 These skills reuse the design system found in this directory, so output comes out

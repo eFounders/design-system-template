@@ -46,7 +46,7 @@ Canonical reference: the **@efounders** registry (`https://ds-registry-five.verc
 ### E · Verification
 - [ ] **A deterministic gate on PRs** — hardcoded colors / unknown tokens fail the build (`ds-check`-style).
 - [ ] **A component audit** to catch duplicates / off-DS components.
-- [ ] **Prototyping skills that generate from the codebase** (`design-prototype`, `design-frame`) — proof the DS is actually used to build.
+- [ ] **A prototyping skill that generates from the codebase** (`/ds-prototype`) — proof the DS is actually used to build.
 
 ## Report format
 

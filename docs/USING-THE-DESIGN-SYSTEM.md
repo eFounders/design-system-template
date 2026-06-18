@@ -72,7 +72,7 @@ clicks. Figma leads here; there's no design system yet. **Once the DA is locked,
    `filter-bar`, `chat-*`). Standard components come from shadcn and are branded automatically.
 4. **Set the brand** — edit `--brand-*`, `--font-base`, `--radius`, `--text-base`.
 5. **Add `CLAUDE.md`** — copy `templates/CLAUDE.md`, fill the paths + tone.
-6. **Check + build** — run `/ds-audit`, then `/design-prototype …`.
+6. **Check + build** — run `/ds-audit`, then `/ds-prototype …`.
 
 ### B · A project that already has a design system
 
@@ -108,9 +108,9 @@ the design system exists, the **code leads** and Figma reflects it. Then you can
 several **pistes in Figma**, validate with the team, and Code Connect round-trips the
 chosen one to code.
 
-**Figma pistes vs HTML protos:** Figma for visual / DA exploration + team buy-in; HTML
-protos (`/design-prototype`) for interactive flows + real data scenarios. Figma generation
-is token-heavy — dose it.
+**One skill, two surfaces:** `/ds-prototype` outputs **HTML** (interactive flows + data
+scenarios, fast) **or Figma** (visual / DA exploration + team buy-in). Figma generation is
+token-heavy — dose it.
 
 **Already have a Figma DS on the project?** Treat it as a *reference to harvest*, not a
 base: regenerate the library from the code, fold any genuinely-better decisions from the
@@ -123,8 +123,7 @@ In a Claude Code conversation **inside the project**:
 
 | You want… | You type |
 |---|---|
-| a clickable multi-screen prototype | `/design-prototype [what you want]` |
-| one polished screen | `/design-frame [the screen]` |
+| design a screen or a clickable flow (HTML or Figma) | `/ds-prototype [what you want]` |
 | a UX review | `/nelly-design-critique` + screenshots + goal |
 | a DS health check | `/ds-audit` |
 
