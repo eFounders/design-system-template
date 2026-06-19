@@ -9,8 +9,8 @@ project, set your own brand on top, and Claude builds on-brand from it.
 
 *What I've understood from my research — 4 principles.*
 
-**1. Get as close to the code as possible — mirror it with a code-linked storybook.**
-The code is the source of truth. The design system lives *in* the codebase, not in a separate document that drifts. The storybook is **linked to the code** — it renders the **real components**, not a static mock — so what you see is exactly what ships.
+**1. Make the whole system visible — a code-linked storybook that doubles as a readability check.**
+The storybook renders the real components and *all* the tokens straight from the code — the source of truth — laid out the way you design (foundations → components → molecules), not a static mock. Because it shows what's **connected**, what's **forked**, and what's **missing**, it's also a diagnostic of **what the AI can actually read**: if the storybook can render the whole system, the AI can read the whole system — so it prototypes and designs from it reliably; the gaps you see are the gaps the AI will hit too.
 
 **2. Build a design-system folder that matches how the AI works — it's the AI's memory.**
 A prompt is one session; the design system is what the AI **remembers** across sessions, teammates and versions. Concretely, an ideal folder holds:
