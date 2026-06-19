@@ -100,11 +100,15 @@ function Foundations() {
       <Section title="Neutral ramp"><Ramp prefix="--neutral-" stops={[0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]} /></Section>
       <Section title="Tag palette">
         <div className="flex flex-wrap gap-2">
-          {(["gray", "red", "orange", "amber", "green", "teal", "blue", "violet", "pink"] as const).map((h) => (
-            <span key={h} className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium" style={{ background: `var(--tag-${h}-bg)`, color: `var(--tag-${h}-fg)` }}>
-              <span className="size-1.5 rounded-full" style={{ background: `var(--tag-${h}-fg)` }} />{h}
-            </span>
-          ))}
+          {(["gray", "red", "orange", "amber", "green", "teal", "blue", "violet", "pink"] as const).map((h) => {
+            const bg = `--tag-${h}-bg`
+            const fg = `--tag-${h}-fg`
+            return (
+              <span key={h} className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium" style={{ background: `var(${bg})`, color: `var(${fg})` }}>
+                <span className="size-1.5 rounded-full" style={{ background: `var(${fg})` }} />{h}
+              </span>
+            )
+          })}
         </div>
       </Section>
       <Section title="Typography">
