@@ -1,23 +1,39 @@
-# registry-template
+# eFounders Design System — the kit
 
-You can use the `shadcn` CLI to run your own component registry. Running your own
-component registry allows you to distribute your custom components, hooks, pages, and
-other files to any React project.
+The shared, **brand-agnostic, AI-native** design-system base for eFounders startups.
+The **code is the source of truth**; each project sets its own brand on top and stays
+independent (the code is owned, not a dependency).
 
-> [!IMPORTANT]  
-> This template uses Tailwind v4. For Tailwind v3, see [registry-template-v3](https://github.com/shadcn-ui/registry-template-v3).
+## Two ways to use it
 
-## Getting Started
+- **Clone the whole kit** — *Use this template* on GitHub. You get tokens + components +
+  storybook + conventions as a starter you own and brand. *(Romain-style, but no drift.)*
+- **Pull pieces** — `shadcn add @efounders/<name>` from the registry
+  (`https://ds-registry-five.vercel.app/r/{name}.json`). Updating = re-pull.
 
-This is a template for creating a custom registry using Next.js.
+## What's inside
 
-- The template uses a `registry.json` file to define components and their files.
-- The `shadcn build` command is used to build the registry.
-- The registry items are served as static files under `public/r/[name].json`.
-- The template also includes a route handler for serving registry items.
-- Every registry item are compatible with the `shadcn` CLI.
-- We have also added v0 integration using the `Open in v0` api.
+- **Tokens** — `app/globals.css` (semantic, two-tier primitives→semantic, light + dark).
+- **Components** — `registry/new-york/` + `components/ui/`: shadcn (themed) + bespoke
+  (`tag`, `stat`, `filter-bar`, `chat-message`, `chat-composer`, `chat-typing`).
+- **Storybook** — `app/page.tsx`: live, renders the real components (foundations →
+  components → molecules), with a token grid (primitive · hex) that auto-resolves.
+- **Conventions** — `templates/CLAUDE.md` (drop-in), `docs/COMPONENTS.md` (specs), `llms.txt`.
+- **Gate** — `scripts/ds-check.mjs` + `.github/workflows/ds-check.yml` (hardcoded values / unknown tokens fail).
+- **Registry** — `registry.json` → `public/r/*.json` (each item carries a `meta` contract).
 
-## Documentation
+## Docs & skills
 
-Visit the [shadcn documentation](https://ui.shadcn.com/docs/registry) to view the full documentation.
+- **How to use it:** `docs/USING-THE-DESIGN-SYSTEM.md` ·
+  [Notion](https://app.notion.com/p/3821cc0bd5bc818986acd792a4490721)
+- **Skills:** `/ds-audit` (assess) · `/ds-bootstrap` (create) · `/ds-figma` (Figma from code) · `/ds-prototype` (screens/flows)
+
+## Dev
+
+```bash
+npm run dev             # the storybook
+npm run registry:build  # build the registry JSON (public/r/*.json)
+npm run ds-check        # the conformance gate
+```
+
+Storybook (live): https://ds-registry-five.vercel.app
