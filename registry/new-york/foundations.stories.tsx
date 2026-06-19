@@ -87,6 +87,13 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function Foundations() {
   return (
     <div className="flex max-w-4xl flex-col gap-8">
+      <p className="text-muted-foreground max-w-2xl text-sm">
+        This is the <strong className="text-foreground">@efounders base</strong>, which is
+        brand-agnostic. The blue is a <strong className="text-foreground">placeholder</strong> default;
+        each project sets its own brand (<code className="font-mono">--brand-*</code>, font, radius) and
+        the whole system recolors. The <strong className="text-foreground">code is the source of truth</strong>;
+        Figma reflects it.
+      </p>
       <Section title="Semantic colors">
         <Grid items={[["background", "--background"], ["foreground", "--foreground"], ["card", "--card"], ["primary", "--primary"], ["secondary", "--secondary"], ["muted", "--muted"], ["accent", "--accent"], ["border", "--border"], ["ring", "--ring"]]} />
       </Section>
