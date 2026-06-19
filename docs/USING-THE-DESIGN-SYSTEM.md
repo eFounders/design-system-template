@@ -7,15 +7,26 @@ project, set your own brand on top, and Claude builds on-brand from it.
 
 ## The principles — what makes a design system AI-native
 
-*General best practices, independent of any one solution.*
+*What I've understood from my research — 4 principles.*
 
-- **Tokens named by intent.** Semantic tokens (`--primary`, `--muted-foreground`…) the agent reads to pick the right value — never a raw hex/px.
-- **As close to the code as possible.** The design system lives in the codebase — the source of truth — where the agent *and* the build read it, not in a doc that drifts.
-- **Real, reused components.** One canonical component per role; the agent reuses them, never reinvents.
-- **Conventions written where the agent reads.** A `CLAUDE.md`-style file carries the rules — when to use what, the 5 states, one primary per screen. *Prompts are instructions; the design system is the memory.*
-- **Figma reflects the code.** Generated / synced from the code; the code stays the source of truth (Figma only leads while you explore the direction).
-- **Consume, don't duplicate.** Distribute the system from one versioned source so projects stay in sync — copies drift.
-- **Enforce it.** A deterministic check fails the build on hardcoded values or unknown tokens.
+**1. Get as close to the code as possible — mirror it with a code-linked storybook.**
+The code is the source of truth. The design system lives *in* the codebase, not in a separate document that drifts. The storybook is **linked to the code** — it renders the **real components**, not a static mock — so what you see is exactly what ships.
+
+**2. Build a design-system folder that matches how the AI works — it's the AI's memory.**
+A prompt is one session; the design system is what the AI **remembers** across sessions, teammates and versions. Concretely, an ideal folder holds:
+- **tokens** — values, semantic, named by intent (`tokens.css`)
+- **components** — the real, reusable ones (the code)
+- **component specs** — what each is *for*, when to use it, variants, states (`COMPONENTS.md`); the code says *how it looks*, the spec says *when to use it*
+- **conventions** — the rules (`CLAUDE.md`): the 5 states, one primary, source of truth
+- **a code-linked storybook** — the live reference
+
+Knowing whether a project's files match this ideal is exactly what `/ds-audit` evaluates.
+
+**3. Reuse the real component library — don't reinvent it.**
+Tools like a **component registry** and **MCP servers** (shadcn for components, Figma for design) let the AI pull directly from your *real* components — the ones that ship. The system becomes queryable: the agent searches it, finds the right component, uses it — instead of inventing a plausible-but-wrong one.
+
+**4. Explore with shareable deliverables.**
+Exploration still needs artifacts the team can review and act on. So prototyping produces real, shareable outputs — in **code** (clickable HTML) or in **Figma** — depending on the moment. The point isn't one magic tool; it's that every exploration lands as something concrete people can react to.
 
 ## Resources
 
