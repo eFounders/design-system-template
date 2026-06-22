@@ -1,6 +1,6 @@
 ---
 name: ds-audit
-description: Expert audit of a project's design system across TWO dimensions — (1) clean codebase and (2) AI-native structure (can an LLM read it and build on-brand reliably). Scores explicit criteria with evidence, then returns turnkey fixes that point to the design-system-template files to copy. Use when the user says "audit my DS", "is my design system AI-native", "check/score my design system", "what's missing", "am I ready to build UI with Claude here", or when onboarding an existing or new project to the @efounders design system. Brownfield-first: most projects already have code — the job is to diagnose and fill the gaps using the template as the model, not rebuild.
+description: Expert audit of a project's design system across TWO dimensions — (1) clean codebase and (2) AI-native structure (can an LLM read it and build on-brand reliably). Scores explicit criteria with evidence, then returns turnkey fixes that point to the design-system-template files to copy. Use when the user says "audit my DS", "is my design system AI-native", "check/score my design system", "what's missing", "am I ready to build UI with Claude here", or when onboarding an existing or new project to the @efounders design system. Most projects already have code — the job is to diagnose and fill the gaps using the template as the model, not rebuild from scratch.
 ---
 
 # DS Audit — clean codebase + AI-native, with turnkey fixes
@@ -12,7 +12,7 @@ Two questions, scored separately:
 
 **Canonical reference & template:** `eFounders/design-system-template` (repo) · Storybook `https://design-system-template-storybook.vercel.app` · Registry `https://design-system-template-registry.vercel.app/r/{name}.json`. Every fix below points to a real file in that template to copy and adapt.
 
-**Brownfield is the default.** Most audits run on a project that *already has* code and maybe a partial DS. The goal is **never to rebuild what works** — diagnose, then drop in the missing pieces using the template's files as ready-made models, aligned to the project's existing brand and naming. Greenfield (nothing yet) is the rare case → duplicate the template or run `/ds-bootstrap`.
+**A project that already has code is the default.** Most audits run on a project that *already has* code and maybe a partial DS. The goal is **never to rebuild what works** — diagnose, then drop in the missing pieces using the template's files as ready-made models, aligned to the project's existing brand and naming. Starting from scratch (nothing yet) is the rare case → duplicate the template or run `/ds-bootstrap`.
 
 ## How to run
 
@@ -107,13 +107,13 @@ A · Tokens
 2. …
 
 ## Mode
-Brownfield (fill gaps, keep what works) | Greenfield (duplicate the template)
+Existing project (fill gaps, keep what works) | From scratch (duplicate the template)
 ```
 
 ## Tailor to the verdict
 
-- **(a) No DS yet** → greenfield: duplicate the template (Use this template) or run **`/ds-bootstrap`**; re-brand via the knobs.
-- **(b) Has a DS, not AI-native** → brownfield, the common case. The gap is usually the **conventions + verification layer**: drop in `CLAUDE.md`, `llms.txt`, `DESIGN.md`, component specs, the `ds-check` gate; make the storybook render real components. **Don't rebuild the tokens/components that already work** — point the conventions at them.
+- **(a) No DS yet** → from scratch: duplicate the template (Use this template) or run **`/ds-bootstrap`**; re-brand via the knobs.
+- **(b) Has a DS, not AI-native** → an existing project, the common case. The gap is usually the **conventions + verification layer**: drop in `CLAUDE.md`, `llms.txt`, `DESIGN.md`, component specs, the `ds-check` gate; make the storybook render real components. **Don't rebuild the tokens/components that already work** — point the conventions at them.
 - **(c) AI-native with gaps** → close the specific failed items; wire/upgrade the gate (incl. the duplicate audit); align token naming to the shadcn contract.
 - **(d) Solid** → keep it consuming the versioned base; maintain only.
 
