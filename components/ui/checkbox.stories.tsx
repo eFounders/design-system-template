@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 import { Checkbox } from "./checkbox"
 
-const meta = { title: "Components/Checkbox", component: Checkbox, tags: ["autodocs"] } satisfies Meta<typeof Checkbox>
+const meta = { title: "Base/Checkbox", component: Checkbox, tags: ["autodocs"] } satisfies Meta<typeof Checkbox>
 
 export default meta
 type Story = StoryObj<typeof meta>

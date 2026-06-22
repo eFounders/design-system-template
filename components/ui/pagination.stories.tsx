@@ -10,7 +10,7 @@ import {
   PaginationPrevious,
 } from "./pagination"
 
-const meta = { title: "Components/Pagination" } satisfies Meta
+const meta = { title: "Base/Pagination" } satisfies Meta
 
 export default meta
 type Story = StoryObj

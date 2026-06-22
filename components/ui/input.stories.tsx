@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { Input } from "./input"
 
 const meta = {
-  title: "Components/Input",
+  title: "Base/Input",
   component: Input,
   tags: ["autodocs"],
 } satisfies Meta<typeof Input>

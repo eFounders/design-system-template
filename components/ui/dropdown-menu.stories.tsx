@@ -8,9 +8,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./dropdown-menu"
-import { Button } from "../../registry/new-york/ui/button"
+import { Button } from "./button"
 
-const meta = { title: "Components/DropdownMenu" } satisfies Meta
+const meta = { title: "Base/DropdownMenu" } satisfies Meta
 
 export default meta
 type Story = StoryObj

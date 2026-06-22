@@ -9,9 +9,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./dialog"
-import { Button } from "../../registry/new-york/ui/button"
+import { Button } from "./button"
 
-const meta = { title: "Components/Dialog" } satisfies Meta
+const meta = { title: "Base/Dialog" } satisfies Meta
 
 export default meta
 type Story = StoryObj

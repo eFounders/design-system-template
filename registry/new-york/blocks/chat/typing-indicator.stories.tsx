@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { TypingIndicator } from "./typing-indicator"
 
 const meta = {
-  title: "Molecules/Chat/TypingIndicator",
+  title: "@efounders/Chat/TypingIndicator",
   component: TypingIndicator,
   tags: ["autodocs"],
 } satisfies Meta<typeof TypingIndicator>

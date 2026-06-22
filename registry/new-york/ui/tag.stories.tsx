@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { Tag } from "./tag"
 
 const meta = {
-  title: "Components/Tag",
+  title: "@efounders/Tag",
   component: Tag,
   tags: ["autodocs"],
 } satisfies Meta<typeof Tag>

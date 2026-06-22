@@ -8,9 +8,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./sheet"
-import { Button } from "../../registry/new-york/ui/button"
+import { Button } from "./button"
 
-const meta = { title: "Components/Sheet" } satisfies Meta
+const meta = { title: "Base/Sheet" } satisfies Meta
 
 export default meta
 type Story = StoryObj

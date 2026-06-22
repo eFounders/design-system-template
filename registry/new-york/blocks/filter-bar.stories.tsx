@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { FilterBar } from "./filter-bar"
 
 const meta = {
-  title: "Molecules/FilterBar",
+  title: "@efounders/FilterBar",
   component: FilterBar,
   tags: ["autodocs"],
 } satisfies Meta<typeof FilterBar>

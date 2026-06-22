@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip"
-import { Button } from "../../registry/new-york/ui/button"
+import { Button } from "./button"
 
-const meta = { title: "Components/Tooltip" } satisfies Meta
+const meta = { title: "Base/Tooltip" } satisfies Meta
 
 export default meta
 type Story = StoryObj

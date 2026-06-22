@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { Composer } from "./composer"
 
 const meta = {
-  title: "Molecules/Chat/Composer",
+  title: "@efounders/Chat/Composer",
   component: Composer,
   tags: ["autodocs"],
 } satisfies Meta<typeof Composer>

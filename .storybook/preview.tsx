@@ -10,6 +10,11 @@ const preview: Preview = {
       },
     },
     a11y: { test: "todo" },
+    options: {
+      storySort: {
+        order: ["Foundations", "@efounders", "Base"],
+      },
+    },
   },
   decorators: [
     (Story) => (

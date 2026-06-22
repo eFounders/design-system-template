@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 import { Switch } from "./switch"
 
-const meta = { title: "Components/Switch", component: Switch, tags: ["autodocs"] } satisfies Meta<typeof Switch>
+const meta = { title: "Base/Switch", component: Switch, tags: ["autodocs"] } satisfies Meta<typeof Switch>
 
 export default meta
 type Story = StoryObj<typeof meta>

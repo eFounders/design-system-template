@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { ChatMessage } from "./message"
 
 const meta = {
-  title: "Molecules/Chat/Message",
+  title: "@efounders/Chat/Message",
   component: ChatMessage,
   tags: ["autodocs"],
 } satisfies Meta<typeof ChatMessage>

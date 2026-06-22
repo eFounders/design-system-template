@@ -9,7 +9,7 @@ import {
   BreadcrumbSeparator,
 } from "./breadcrumb"
 
-const meta = { title: "Components/Breadcrumb" } satisfies Meta
+const meta = { title: "Base/Breadcrumb" } satisfies Meta
 
 export default meta
 type Story = StoryObj
