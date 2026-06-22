@@ -118,6 +118,51 @@ for (const file of files) {
   });
 }
 
+// ---- duplicate-component audit (one canonical per role) ------------------
+// Deterministic: flags the same component file basename, or the same exported
+// PascalCase component, defined in more than one place. Catches Button/AppButton
+// sprawl and stray copies (e.g. the same component in components/ui AND registry/).
+{
+  const COMPONENT_DIRS = ["components/ui", "registry/new-york/ui", "registry/new-york/blocks"];
+  const byBase = {};
+  const byExport = {};
+  const walkComp = (dir) => {
+    const abs = join(ROOT, dir);
+    if (!existsSync(abs)) return;
+    for (const entry of readdirSync(abs)) {
+      const p = join(abs, entry);
+      if (statSync(p).isDirectory()) { walkComp(join(dir, entry)); continue; }
+      if (!/\.tsx$/.test(entry) || /\.(stories|test)\.tsx$/.test(entry)) continue;
+      const rel = relative(ROOT, p);
+      const base = entry.replace(/\.tsx$/, "");
+      (byBase[base] ??= []).push(rel);
+      const text = readFileSync(p, "utf8");
+      const names = new Set();
+      for (const m of text.matchAll(/export\s+(?:async\s+)?(?:function|const)\s+([A-Z]\w+)/g)) names.add(m[1]);
+      for (const m of text.matchAll(/export\s*\{([^}]*)\}/g)) {
+        for (let part of m[1].split(",")) {
+          part = part.trim();
+          if (!part) continue;
+          const asM = part.match(/\bas\s+([A-Za-z]\w*)/);
+          const name = asM ? asM[1] : part.split(/\s+/)[0];
+          if (/^[A-Z]\w+$/.test(name)) names.add(name);
+        }
+      }
+      for (const n of names) (byExport[n] ??= new Set()).add(rel);
+    }
+  };
+  COMPONENT_DIRS.forEach(walkComp);
+  for (const [base, list] of Object.entries(byBase)) {
+    if (list.length > 1)
+      findings.push({ rel: list[1], ln: 1, level: "error", msg: `duplicate component file "${base}.tsx" — also at ${list[0]} (keep one canonical per role)` });
+  }
+  for (const [name, set] of Object.entries(byExport)) {
+    const list = [...set];
+    if (list.length > 1)
+      findings.push({ rel: list[1], ln: 1, level: "error", msg: `component "${name}" exported from ${list.length} files (${list.join(", ")}) — one canonical per role` });
+  }
+}
+
 const errors = findings.filter((f) => f.level === "error");
 const warns = findings.filter((f) => f.level === "warn");
 const score = Math.max(0, 100 - errors.length * 10 - warns.length * 2);
