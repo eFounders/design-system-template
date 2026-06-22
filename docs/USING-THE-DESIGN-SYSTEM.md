@@ -144,3 +144,12 @@ Because the project has its tokens + `CLAUDE.md`, what comes out is already on-b
 you don't re-explain the system each time. *Roles:* PM spins a prototype to align;
 Designer maintains the base, sets the brand, refines, reviews; Dev pulls components and
 Claude codes on-brand from the `CLAUDE.md`.
+
+**Recommended (not required) — keep the live storybook auto-updating.** Locally the
+storybook is live (change a value → it updates instantly). The *deployed* one is a static
+build, so it only refreshes when it's rebuilt. Wire the storybook's Vercel project to the
+repo with build command `npm run build-storybook` and output `storybook-static`: every push
+to `main` then republishes it, so the team always sees the real state of the DS. Not wired?
+Run `npm run build-storybook` and redeploy before sharing the link. This is a workflow
+nicety, not an AI-readability requirement — the agent reads the code, not the hosted page,
+so `/ds-audit` doesn't score it.
