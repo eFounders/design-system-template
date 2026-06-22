@@ -28,30 +28,17 @@ npx shadcn add @efounders/theme
 
 ## 3. Add the components you need
 
+The toolbox is the standard shadcn component set — once the `@efounders/theme` is in place, every component you add is automatically themed by the tokens:
+
 ```bash
-npx shadcn add @efounders/tag
-npx shadcn add @efounders/stat
-npx shadcn add @efounders/filter-bar
-npx shadcn add @efounders/chat-message @efounders/chat-composer @efounders/chat-typing
+npx shadcn add button input form sidebar command dialog
 ```
 
-Bespoke components depend on standard shadcn primitives (e.g. `button`, `badge`). shadcn resolves and installs those automatically.
-
-## Available items
-
-| Item | Type | What it is |
-|---|---|---|
-| `theme` | theme | Tokens — light + dark, brand knobs |
-| `tag` | ui | Decorative category label, 9 hues |
-| `stat` | ui | One key number + label + trend |
-| `filter-bar` | block | Filter buttons + active chips + result count |
-| `chat-message` | block | A chat bubble (user / assistant) |
-| `chat-composer` | block | Prompt input, Enter to send |
-| `chat-typing` | block | Typing indicator |
+Browse the **Base** section of this Storybook to see the full set, themed, with all states.
 
 ## Updating
 
-Re-run `shadcn add @efounders/<name>` to pull the latest version of an item. You own the copied code, so review the diff before overwriting local edits.
+Re-run the `add` command to pull the latest version of an item. You own the copied code, so review the diff before overwriting local edits.
 
 ## Spinning a project out
 

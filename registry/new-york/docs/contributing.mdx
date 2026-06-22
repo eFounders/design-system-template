@@ -11,19 +11,10 @@ How to extend the design system without letting it drift.
 | Layer | Folder | Distributed? |
 |---|---|---|
 | Tokens | `app/globals.css` | via `@efounders/theme` |
-| Bespoke components | `registry/new-york/ui/`, `registry/new-york/blocks/` | yes — listed in `registry.json` |
-| Base shadcn primitives | `components/ui/` | no — consumed locally + composed by bespoke |
-| Demo site | `app/` | no |
+| Component toolbox | `components/ui/` | standard shadcn, themed by the tokens |
+| Demo / landing | `app/` | no |
 
-**One canonical component per role.** Don't add `PrimaryButton` next to `Button`. If a component is missing, compose existing ones; promote it to `registry/` only when it's a real, reusable pattern.
-
-## Adding a bespoke component
-
-1. Build it in `registry/new-york/` using tokens only (no hardcoded colors/px).
-2. Add a `.stories.tsx` titled `@efounders/<Name>` and a `.mdx` doc next to it.
-3. Register it in `registry.json` (with `registryDependencies` for any base primitives it uses).
-4. Run `npm run registry:build` to generate `public/r/<name>.json`.
-5. Run the gate — it must pass.
+**One canonical component per role.** Don't add `PrimaryButton` next to `Button`. If a component is missing, install it from shadcn (`npx shadcn add <name>`) — it inherits the theme automatically. Build a *custom* component only when it's a genuinely reusable pattern shadcn doesn't cover, and never one that just duplicates a primitive (a `Tag` that is only a `Badge` with a colour, for instance).
 
 ## The gate
 

@@ -4,14 +4,17 @@ import { Meta } from "@storybook/addon-docs/blocks"
 
 # @efounders Design System
 
-A brand-agnostic design-system base, distributed as a **shadcn registry**. Projects consume it with `shadcn add @efounders/...`, then own the code locally. The code is the **single source of truth**; Figma reflects it.
+A brand-agnostic **toolbox**, distributed as a **shadcn registry**. The code is the **single source of truth**; Figma reflects it.
+
+The toolbox = **design tokens** + the **full shadcn component set themed by those tokens** + the **conventions** an agent needs to build on-brand. Projects install pieces with `shadcn add`, then own the code locally.
 
 ## How this Storybook is organised
 
 - **Get started** — you are here: welcome, installation, contributing.
-- **Foundations** — the design tokens (colors, spacing, radius, typography) the whole system is built from.
-- **@efounders** — the components this design system *distributes*. These are yours: `Tag`, `Stat`, `FilterBar`, and the `Chat` blocks. **This is the design system.**
-- **Base** — the standard shadcn primitives (`Button`, `Input`, `Dialog`…) the project consumes and themes. They are documented upstream by shadcn; the bespoke `@efounders` components compose them.
+- **Foundations** — the design tokens (colors, spacing, radius, typography) everything is built from.
+- **Base** — the component toolbox: the full set of shadcn primitives (`Button`, `Input`, `Dialog`, `Sidebar`, `Command`, `Form`…), themed by the tokens. This is what you build with.
+
+> Project-specific components (a custom “molecule”) live in each project, not here — the base stays universal. A shared **Custom** layer may be added later if a pattern proves reusable across projects.
 
 ## The three things that make it AI-native
 
@@ -21,4 +24,4 @@ A brand-agnostic design-system base, distributed as a **shadcn registry**. Proje
 
 ## Source of truth
 
-Code first. Tokens live in `app/globals.css`. Components live in `registry/new-york/` (distributed) and `components/ui/` (base). Never hardcode a value when a token exists — the `ds-check` gate enforces it.
+Code first. Tokens live in `app/globals.css`. Components live in `components/ui/`. Never hardcode a value when a token exists — the `ds-check` gate enforces it.
