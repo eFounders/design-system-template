@@ -30,8 +30,8 @@ Exploration still needs artifacts the team can review and act on. So prototyping
 
 ## Resources
 
-- **Storybook (live reference):** https://design-system-template-registry.vercel.app
-- **Registry** — what `shadcn add` reads under the hood (not a page to open). Pattern `…/r/{name}.json`, where `{name}` is the component, e.g. `/r/theme.json`.
+- **Storybook (live reference):** https://design-system-template-storybook.vercel.app
+- **Registry** — what `shadcn add` reads under the hood (not a page to open). Pattern `https://design-system-template-registry.vercel.app/r/{name}.json`, e.g. `/r/theme.json`.
 - **Repo:** https://github.com/eFounders/design-system-template
 - **Component specs (agent-readable):** [`docs/COMPONENTS.md`](./COMPONENTS.md)
 
