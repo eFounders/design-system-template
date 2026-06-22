@@ -9,7 +9,7 @@ independent (the code is owned, not a dependency).
 - **Clone the whole kit** — *Use this template* on GitHub. You get tokens + components +
   storybook + conventions as a starter you own and brand. *(Romain-style, but no drift.)*
 - **Pull pieces** — `shadcn add @efounders/<name>` from the registry
-  (`https://ds-registry-five.vercel.app/r/{name}.json`). Updating = re-pull.
+  (`https://design-system-template-registry.vercel.app/r/{name}.json`). Updating = re-pull.
 
 ## What's inside
 
@@ -18,7 +18,7 @@ independent (the code is owned, not a dependency).
   (one canonical component per role, no duplicates). `registry/new-york/` holds the
   distributed `theme` (and any future custom component).
 - **Storybook** — the real reference, published at
-  `https://ds-registry-storybook.vercel.app` (Get started · Foundations · Base),
+  `https://design-system-template-storybook.vercel.app` (Get started · Foundations · Base),
   rendering the actual components. `npm run storybook` to run it locally.
 - **Conventions** — `templates/CLAUDE.md` (drop-in), `docs/COMPONENTS.md` (specs), `llms.txt`.
 - **Gate** — `scripts/ds-check.mjs` + `.github/workflows/ds-check.yml` (hardcoded values / unknown tokens fail).
@@ -39,4 +39,4 @@ npm run registry:build  # build the registry JSON (public/r/*.json)
 npm run ds-check        # the conformance gate
 ```
 
-Storybook (live): https://ds-registry-storybook.vercel.app · Registry JSON: https://ds-registry-five.vercel.app/r/{name}.json
+Storybook (live): https://design-system-template-storybook.vercel.app · Registry JSON: https://design-system-template-registry.vercel.app/r/{name}.json

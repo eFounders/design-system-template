@@ -12,12 +12,12 @@
   two tiers (primitives → semantic), light + dark.
 - Component specs (agent-readable): docs/COMPONENTS.md — token intent + component rules.
 - Component code: components/ui/ — the full shadcn toolbox, themed by the tokens. registry/new-york/ holds the distributed theme.
-- Storybook (live reference): https://ds-registry-storybook.vercel.app
+- Storybook (live reference): https://design-system-template-storybook.vercel.app
 
 ## Registry (machine-readable)
 - Catalog: registry.json. Built items: public/r/*.json.
 - Each built item carries a `meta` contract: status, props, variants, composition rules, related.
-- Consume: `shadcn add @efounders/<name>` — registry URL https://ds-registry-five.vercel.app/r/{name}.json
+- Consume: `shadcn add @efounders/<name>` — registry URL https://design-system-template-registry.vercel.app/r/{name}.json
 - Query from an agent: the shadcn MCP (`shadcn mcp init --client claude`).
 
 ## Checks
