@@ -5,7 +5,6 @@ import { ChatMessage } from "./message"
 const meta = {
   title: "@efounders/Chat/Message",
   component: ChatMessage,
-  tags: ["autodocs"],
 } satisfies Meta<typeof ChatMessage>
 
 export default meta

@@ -1,0 +1,38 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Get started/Contributing" />
+
+# Contributing
+
+How to extend the design system without letting it drift.
+
+## Where things live
+
+| Layer | Folder | Distributed? |
+|---|---|---|
+| Tokens | `app/globals.css` | via `@efounders/theme` |
+| Bespoke components | `registry/new-york/ui/`, `registry/new-york/blocks/` | yes — listed in `registry.json` |
+| Base shadcn primitives | `components/ui/` | no — consumed locally + composed by bespoke |
+| Demo site | `app/` | no |
+
+**One canonical component per role.** Don't add `PrimaryButton` next to `Button`. If a component is missing, compose existing ones; promote it to `registry/` only when it's a real, reusable pattern.
+
+## Adding a bespoke component
+
+1. Build it in `registry/new-york/` using tokens only (no hardcoded colors/px).
+2. Add a `.stories.tsx` titled `@efounders/<Name>` and a `.mdx` doc next to it.
+3. Register it in `registry.json` (with `registryDependencies` for any base primitives it uses).
+4. Run `npm run registry:build` to generate `public/r/<name>.json`.
+5. Run the gate — it must pass.
+
+## The gate
+
+```bash
+npm run ds-check        # or the /ds-check slash command
+```
+
+It fails the build on hardcoded colors and on `var(--token)` referencing a token not defined in `app/globals.css`. The gate **is** the design-system rules, made executable.
+
+## Tokens
+
+Change the brand by editing the knobs only: `--brand-*`, `--radius`, font, density. Everything re-skins from there. Add a `/* use for / not for */` comment when you introduce a new semantic token, so an agent picks the right one.

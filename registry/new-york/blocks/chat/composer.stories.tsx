@@ -5,7 +5,6 @@ import { Composer } from "./composer"
 const meta = {
   title: "@efounders/Chat/Composer",
   component: Composer,
-  tags: ["autodocs"],
 } satisfies Meta<typeof Composer>
 
 export default meta

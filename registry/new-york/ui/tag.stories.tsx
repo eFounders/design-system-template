@@ -5,7 +5,6 @@ import { Tag } from "./tag"
 const meta = {
   title: "@efounders/Tag",
   component: Tag,
-  tags: ["autodocs"],
 } satisfies Meta<typeof Tag>
 
 export default meta

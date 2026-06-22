@@ -5,7 +5,6 @@ import { TypingIndicator } from "./typing-indicator"
 const meta = {
   title: "@efounders/Chat/TypingIndicator",
   component: TypingIndicator,
-  tags: ["autodocs"],
 } satisfies Meta<typeof TypingIndicator>
 
 export default meta

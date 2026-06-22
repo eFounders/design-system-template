@@ -5,7 +5,6 @@ import { FilterBar } from "./filter-bar"
 const meta = {
   title: "@efounders/FilterBar",
   component: FilterBar,
-  tags: ["autodocs"],
 } satisfies Meta<typeof FilterBar>
 
 export default meta

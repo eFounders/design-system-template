@@ -5,7 +5,6 @@ import { Stat } from "./stat"
 const meta = {
   title: "@efounders/Stat",
   component: Stat,
-  tags: ["autodocs"],
 } satisfies Meta<typeof Stat>
 
 export default meta

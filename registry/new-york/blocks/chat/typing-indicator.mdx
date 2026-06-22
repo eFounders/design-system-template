@@ -1,0 +1,23 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks"
+import * as TypingStories from "./typing-indicator.stories"
+
+<Meta of={TypingStories} />
+
+# Chat · TypingIndicator
+
+A small animated indicator shown while the assistant is composing a reply. Part of the `Chat` block family.
+
+<Canvas of={TypingStories.Default} />
+
+## When to use
+
+- Between the user's message and the assistant's reply, while generating.
+- Remove it as soon as the first token of the real `Message` streams in.
+
+## When not to use
+
+- As a generic page loader — use a skeleton or spinner.
+
+## Accessibility
+
+The indicator is decorative motion. Convey "assistant is responding" to assistive tech with a polite live-region announcement rather than relying on the animation alone, and respect reduced-motion preferences.

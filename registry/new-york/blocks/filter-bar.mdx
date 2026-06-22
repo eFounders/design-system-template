@@ -1,0 +1,34 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks"
+import * as FilterBarStories from "./filter-bar.stories"
+
+<Meta of={FilterBarStories} />
+
+# FilterBar
+
+Filter buttons, removable active chips, a clear-all action, and a result count. The standard way to narrow a list.
+
+<Canvas of={FilterBarStories.Default} />
+
+## When to use
+
+- Filtering a collection (table, grid, feed) by one or more facets.
+- Anywhere the user needs to see *which* filters are active and remove them one by one.
+
+## When not to use
+
+- A single binary toggle — use a `Switch`.
+- Full-text search — pair with an `Input`, don't model it as a filter chip.
+
+## Behaviour
+
+- Active filters appear as removable chips; each chip's ✕ removes just that filter.
+- **Clear all** resets every filter at once.
+- The result count reflects the current filter set, so the user always knows the impact.
+
+## Accessibility
+
+Filter controls are real buttons (keyboard reachable, focus-visible). Each active chip's remove control has an accessible label. The result count is announced so screen-reader users get the same feedback as sighted users.
+
+## Props
+
+<Controls of={FilterBarStories.Default} />
