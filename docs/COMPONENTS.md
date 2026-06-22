@@ -1,8 +1,9 @@
-# Component specs — `@efounders` bespoke
+# Component specs — `@efounders`
 
-What the agent reads to use our components correctly. Standard shadcn components
-(button, input, table…) follow shadcn's own docs + the tokens. These are the bespoke
-ones `@efounders` adds. **Every value comes from a token — never a raw hex/px.**
+What the agent reads to use the design system correctly. The toolbox is the **full shadcn
+component set** (button, input, dialog, sidebar, command, form…), themed by the tokens — it
+follows shadcn's own docs plus the token rules below. Browse them, themed and with all states,
+in the **Base** section of the Storybook. **Every value comes from a token — never a raw hex/px.**
 
 ## Token intent (the ones to get right)
 
@@ -13,41 +14,18 @@ ones `@efounders` adds. **Every value comes from a token — never a raw hex/px.
 | `--accent` (+ `-foreground`) | hover / selected background (menus, rows) | a primary action |
 | `--destructive…` | error, delete (confirm first) | a warning (→ `--warning`) |
 | `--success` / `--warning` / `--info` (+ `-subtle`) | feedback meaning only | decoration |
-| `--tag-{hue}-bg` / `-fg` | decorative categories (Tag) | a semantic status (→ Badge) |
+| `--tag-{hue}-bg` / `-fg` | decorative, non-semantic categories | a semantic status (→ a `Badge`) |
 | `--border` / `--input` / `--ring` | borders, field borders, focus ring | text |
 
 ## Components
 
-### Tag — `@efounders/tag`
-- **For:** a decorative, non-semantic label (category, team, project, custom status). The hue *identifies*; it doesn't mean "error" or "success".
-- **Not for:** a semantic status (→ Badge). Never hijack feedback colors for a category.
-- **Variants:** `hue` = gray · red · orange · amber · green · teal · blue · violet · pink. Optional leading `dot`.
-- **Tokens:** `--tag-{hue}-bg` / `--tag-{hue}-fg`.
-- **Rule:** one hue = one category, stable over time.
+There are **no bespoke components** — the toolbox is the standard shadcn set, themed by the
+tokens. Install what you need with `npx shadcn add <name>`; it inherits the theme automatically.
 
-### Stat / KPI — `@efounders/stat`
-- **For:** one key number + label + optional trend. 3–4 per row max. Never a pie chart.
-- **Anatomy:** label (muted) · value (large, tabular-nums) · delta (trend up/down/neutral).
-- **Tokens:** `--muted-foreground` (label), `--foreground` (value), `--success` / `--destructive` (delta).
-
-### Filter bar — `@efounders/filter-bar`
-- **For:** restricting a list/table — filter buttons + removable active chips + clear-all + result count.
-- **Tokens:** `--secondary` / `--border` (inactive), `--primary-subtle` / `--primary` (active chip), `--accent`.
-- **Rules:** an active filter is always visible and removable. "No results" is a distinct state from "no data".
-
-### Chat message — `@efounders/chat-message`
-- **For:** one conversation turn.
-- **Variants:** `user` (on `--accent`, aligned right) · `assistant` (on `--card` + border, holds rich content).
-- **Tokens:** `--accent` (user), `--card` / `--border` (assistant), `--muted-foreground` (name / timestamp).
-
-### Composer — `@efounders/chat-composer`
-- **For:** writing & sending a prompt. Enter = send, Shift+Enter = newline. Send becomes **Stop** while generating.
-- **States:** idle · typing · generating (Stop) · disabled (must explain why, e.g. quota reached).
-- **Tokens:** `--card` / `--border` / `--ring`, `--primary` (Send).
-
-### Typing indicator — `@efounders/chat-typing`
-- **For:** "the assistant is writing" — three pulsing dots. Respects `prefers-reduced-motion`. Always interruptible (the composer shows Stop).
-- **Tokens:** `--card` / `--border`, `--muted-foreground`.
+**One canonical component per role.** Don't duplicate a primitive (a `Tag` that is only a
+`Badge` with a colour, for instance). Add a *custom* component only when it's a genuinely
+reusable pattern shadcn doesn't cover — and when you do, give it a spec in this section
+(for / not-for · variants · tokens · rules), register it in `registry.json`, and add a story.
 
 ## Missing a component?
 

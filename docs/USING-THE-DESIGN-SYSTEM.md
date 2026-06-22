@@ -80,8 +80,8 @@ clicks. Figma leads here; there's no design system yet. **Once the DA is locked,
 1. **Ensure shadcn + Tailwind v4** (`npx shadcn@latest init` if needed).
 2. **Point at the registry** — add the `@efounders` namespace in `components.json`,
    pointing to `https://ds-registry-five.vercel.app/r/{name}.json`.
-3. **Pull the base** — `shadcn add @efounders/theme` + any bespoke you need (`tag`, `stat`,
-   `filter-bar`, `chat-*`). Standard components come from shadcn and are branded automatically.
+3. **Pull the base** — `shadcn add @efounders/theme`, then the components you need
+   (`shadcn add button input sidebar form …`) — all branded automatically by the theme.
 4. **Set the brand** — edit `--brand-*`, `--font-base`, `--radius`, `--text-base`.
 5. **Add `CLAUDE.md`** — copy `templates/CLAUDE.md`, fill the paths + tone.
 6. **Check + build** — run `/ds-audit`, then `/ds-prototype …`.
