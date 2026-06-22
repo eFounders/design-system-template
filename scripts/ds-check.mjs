@@ -28,6 +28,7 @@ const ROOT = process.cwd();
 // Where the brand tokens live (first match wins). The agent and the gate
 // read the same contract. Add your project's path here if it differs.
 const TOKEN_FILES = [
+  "app/tokens.css",
   "app/globals.css",
   "src/styles.css",
   "styles.css",

@@ -13,7 +13,8 @@ independent (the code is owned, not a dependency).
 
 ## What's inside
 
-- **Tokens** — `app/globals.css` (semantic, two-tier primitives→semantic, light + dark).
+- **Tokens** — `app/tokens.css` (the values: two-tier primitives→semantic, light + dark; `app/globals.css` wires them into Tailwind).
+- **Visual identity** — `DESIGN.md` (portable summary) · **agent rules** — `CLAUDE.md`.
 - **Components** — `components/ui/`: the full shadcn toolbox, themed by the tokens
   (one canonical component per role, no duplicates). `registry/new-york/` holds the
   distributed `theme` (and any future custom component).
