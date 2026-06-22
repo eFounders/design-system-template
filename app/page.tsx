@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 
-const STORYBOOK_URL = "https://storybook-static-weld-kappa.vercel.app"
+const STORYBOOK_URL = "https://ds-registry-storybook.vercel.app"
 
 export default function Home() {
   return (
