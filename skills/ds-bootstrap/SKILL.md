@@ -12,8 +12,8 @@ Now crystallise it into a real design system for *this* project, seeded from the
 **Source of truth from here on = the code.** Figma led during exploration; once this skill
 runs, the code leads and Figma reflects it.
 
-Shared base: `@efounders` registry — `https://ds-registry-five.vercel.app` (repo
-`eFounders/ds-registry`). Reuse its templates, don't reinvent.
+Shared base: `@efounders` registry — `https://design-system-template-registry.vercel.app` (repo
+`eFounders/design-system-template`). Reuse its templates, don't reinvent.
 
 ## Inputs (gather first — interview briefly if missing)
 
@@ -28,7 +28,7 @@ before generating.
 ## Procedure
 
 1. **Wire the base.** Add the `@efounders` namespace to `components.json`
-   (`https://ds-registry-five.vercel.app/r/{name}.json`), then `shadcn add @efounders/theme`
+   (`https://design-system-template-registry.vercel.app/r/{name}.json`), then `shadcn add @efounders/theme`
    and the components the project needs (`shadcn add button input table sidebar form …`) —
    all branded automatically by the theme.
 2. **Apply the DA = set the brand**, the *only* knobs to touch in the tokens file:

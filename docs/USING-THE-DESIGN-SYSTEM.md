@@ -30,9 +30,9 @@ Exploration still needs artifacts the team can review and act on. So prototyping
 
 ## Resources
 
-- **Storybook (live reference):** https://ds-registry-five.vercel.app
+- **Storybook (live reference):** https://design-system-template-registry.vercel.app
 - **Registry** — what `shadcn add` reads under the hood (not a page to open). Pattern `…/r/{name}.json`, where `{name}` is the component, e.g. `/r/theme.json`.
-- **Repo:** https://github.com/eFounders/ds-registry
+- **Repo:** https://github.com/eFounders/design-system-template
 - **Component specs (agent-readable):** [`docs/COMPONENTS.md`](./COMPONENTS.md)
 
 ## Independence — spinning a startup out
@@ -79,7 +79,7 @@ clicks. Figma leads here; there's no design system yet. **Once the DA is locked,
 
 1. **Ensure shadcn + Tailwind v4** (`npx shadcn@latest init` if needed).
 2. **Point at the registry** — add the `@efounders` namespace in `components.json`,
-   pointing to `https://ds-registry-five.vercel.app/r/{name}.json`.
+   pointing to `https://design-system-template-registry.vercel.app/r/{name}.json`.
 3. **Pull the base** — `shadcn add @efounders/theme`, then the components you need
    (`shadcn add button input sidebar form …`) — all branded automatically by the theme.
 4. **Set the brand** — edit `--brand-*`, `--font-base`, `--radius`, `--text-base`.

@@ -7,7 +7,7 @@ description: Audit a codebase to assess whether its design system is AI-native (
 
 An **AI-native design system** is one an agent can *read and build from reliably*: the brand lives in machine-readable tokens, the rules live where the agent reads (the code + a `CLAUDE.md`), components are real and reused, and the whole thing is a versioned source of truth — not copied per project. This skill assesses a real codebase against that bar and returns a plan.
 
-Canonical reference: the **@efounders** registry (`https://ds-registry-five.vercel.app`, repo `eFounders/ds-registry`). Align findings toward it.
+Canonical reference: the **@efounders** registry (`https://design-system-template-registry.vercel.app`, repo `eFounders/design-system-template`). Align findings toward it.
 
 ## How to run the audit
 
