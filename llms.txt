@@ -8,8 +8,9 @@
 - Conventions template: templates/CLAUDE.md (drop into a project so the agent builds on-brand)
 
 ## Tokens & components
-- Tokens (the contract): app/globals.css — semantic shadcn tokens + in-house extensions,
-  two tiers (primitives → semantic), light + dark.
+- Tokens (the contract): app/tokens.css — semantic shadcn tokens + in-house extensions,
+  two tiers (primitives → semantic), light + dark. (app/globals.css wires them into Tailwind.)
+- Visual identity (portable): DESIGN.md. Agent rules for this repo: CLAUDE.md.
 - Component specs (agent-readable): docs/COMPONENTS.md — token intent + component rules.
 - Component code: components/ui/ — the full shadcn toolbox, themed by the tokens. registry/new-york/ holds the distributed theme.
 - Storybook (live reference): https://design-system-template-storybook.vercel.app
