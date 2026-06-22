@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 import { Avatar, AvatarFallback } from "./avatar"
 
-const meta = { title: "Components/Avatar" } satisfies Meta
+const meta = { title: "Base/Avatar" } satisfies Meta
 
 export default meta
 type Story = StoryObj

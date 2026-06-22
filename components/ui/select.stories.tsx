@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "./select"
 
-const meta = { title: "Components/Select" } satisfies Meta
+const meta = { title: "Base/Select" } satisfies Meta
 
 export default meta
 type Story = StoryObj

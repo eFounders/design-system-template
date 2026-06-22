@@ -1,0 +1,45 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Get started/Installation" />
+
+# Installation
+
+The design system is distributed as a **shadcn registry**. You install pieces into your own project — the code is copied in, so you own it (no runtime dependency).
+
+## 1. Point your project at the registry
+
+In your project's `components.json`, declare the `@efounders` registry:
+
+```json
+{
+  "registries": {
+    "@efounders": "https://ds-registry-five.vercel.app/r/{name}.json"
+  }
+}
+```
+
+## 2. Add the theme first
+
+The theme carries the tokens (light + dark) every component relies on:
+
+```bash
+npx shadcn add @efounders/theme
+```
+
+## 3. Add the components you need
+
+The toolbox is the standard shadcn component set — once the `@efounders/theme` is in place, every component you add is automatically themed by the tokens:
+
+```bash
+npx shadcn add button input form sidebar command dialog
+```
+
+Browse the **Base** section of this Storybook to see the full set, themed, with all states.
+
+## Updating
+
+Re-run the `add` command to pull the latest version of an item. You own the copied code, so review the diff before overwriting local edits.
+
+## Spinning a project out
+
+`shadcn add` copies code — it is not a build/runtime dependency. A project can stop pulling from `@efounders` at any time and keep everything it already has. Independence is built in.

@@ -10,9 +10,9 @@
 ## Tokens & components
 - Tokens (the contract): app/globals.css — semantic shadcn tokens + in-house extensions,
   two tiers (primitives → semantic), light + dark.
-- Component specs (agent-readable): docs/COMPONENTS.md — token intent + a fiche per bespoke component.
-- Component code: registry/new-york/ — standard shadcn (themed) + bespoke (tag, stat, filter-bar, chat-*).
-- Storybook (live reference): https://ds-registry-five.vercel.app
+- Component specs (agent-readable): docs/COMPONENTS.md — token intent + component rules.
+- Component code: components/ui/ — the full shadcn toolbox, themed by the tokens. registry/new-york/ holds the distributed theme.
+- Storybook (live reference): https://ds-registry-storybook.vercel.app
 
 ## Registry (machine-readable)
 - Catalog: registry.json. Built items: public/r/*.json.

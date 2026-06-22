@@ -37,10 +37,12 @@ const TOKEN_FILES = [
 ].filter((p) => existsSync(join(ROOT, p)));
 
 const SCAN_EXTS = new Set([".css", ".scss", ".html", ".js", ".jsx", ".ts", ".tsx", ".vue", ".svelte", ".astro"]);
-const IGNORE_DIRS = new Set(["node_modules", ".git", "dist", "build", ".next", "out", "coverage", "public"]);
+const IGNORE_DIRS = new Set(["node_modules", ".git", "dist", "build", ".next", "out", "coverage", "public", "storybook-static", ".turbo"]);
 const ALLOW_COLOR_WORDS = new Set(["transparent", "currentcolor", "inherit", "none", "initial", "unset"]);
 // Runtime / framework CSS vars set outside the tokens file (Radix, Tailwind, cmdk) — not DS tokens.
 const RUNTIME_VAR_PREFIXES = ["tw-", "radix-", "cmdk-"];
+// Tailwind v4 built-ins (--spacing) + component-local layout vars (set inline via style props) — not DS tokens.
+const RUNTIME_VAR_NAMES = new Set(["spacing", "gap", "sidebar-width", "sidebar-width-icon"]);
 
 // ---- load the known tokens from the tokens file(s) -----------------------
 function loadTokens() {
@@ -91,6 +93,10 @@ for (const file of files) {
 
     if (!isTokenFile) {
       for (const m of code.matchAll(RE_HEX)) {
+        // Skip hex inside a quoted attribute-selector value, e.g. [stroke='#ccc'] — it MATCHES a
+        // third-party default to override it with a token, it is not an applied color.
+        const before = code[m.index - 1];
+        if (before === "'" || before === '"') continue;
         findings.push({ rel, ln, level: "error", msg: `hardcoded color ${m[0]} → use a token (var(--…))` });
       }
       for (const m of code.matchAll(RE_FUNC)) {
@@ -99,7 +105,7 @@ for (const file of files) {
     }
     for (const m of code.matchAll(RE_VAR)) {
       const name = m[1].toLowerCase();
-      if (!tokens.has(name) && !RUNTIME_VAR_PREFIXES.some((p) => name.startsWith(p))) {
+      if (!tokens.has(name) && !RUNTIME_VAR_NAMES.has(name) && !RUNTIME_VAR_PREFIXES.some((p) => name.startsWith(p))) {
         findings.push({ rel, ln, level: "error", msg: `unknown token --${name} (not defined in the tokens file)` });
       }
     }

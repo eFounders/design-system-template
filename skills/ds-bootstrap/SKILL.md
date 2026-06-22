@@ -29,8 +29,8 @@ before generating.
 
 1. **Wire the base.** Add the `@efounders` namespace to `components.json`
    (`https://ds-registry-five.vercel.app/r/{name}.json`), then `shadcn add @efounders/theme`
-   + the bespoke this project needs (`tag`, `stat`, `filter-bar`, `chat-*`). Standard
-   components come from shadcn (`shadcn add button input table …`) — branded automatically.
+   and the components the project needs (`shadcn add button input table sidebar form …`) —
+   all branded automatically by the theme.
 2. **Apply the DA = set the brand**, the *only* knobs to touch in the tokens file:
    `--brand-*` (the ramp), `--font-base` (+ display font), `--radius`, `--text-base`
    (density), `--tag-*`. Everything else follows. Keep the semantic contract intact.

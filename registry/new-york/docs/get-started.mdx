@@ -1,0 +1,27 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Get started/Welcome" />
+
+# @efounders Design System
+
+A brand-agnostic **toolbox**, distributed as a **shadcn registry**. The code is the **single source of truth**; Figma reflects it.
+
+The toolbox = **design tokens** + the **full shadcn component set themed by those tokens** + the **conventions** an agent needs to build on-brand. Projects install pieces with `shadcn add`, then own the code locally.
+
+## How this Storybook is organised
+
+- **Get started** — you are here: welcome, installation, contributing.
+- **Foundations** — the design tokens (colors, spacing, radius, typography) everything is built from.
+- **Base** — the component toolbox: the full set of shadcn primitives (`Button`, `Input`, `Dialog`, `Sidebar`, `Command`, `Form`…), themed by the tokens. This is what you build with.
+
+> Project-specific components (a custom “molecule”) live in each project, not here — the base stays universal. A shared **Custom** layer may be added later if a pattern proves reusable across projects.
+
+## The three things that make it AI-native
+
+1. **Tokens by role** — `--primary`, `--muted-foreground`… mapped from a few brand knobs (`--brand-*`, `--radius`, font). Re-skin everything by changing the knobs.
+2. **Rules where the agent reads them** — `CLAUDE.md`, `llms.txt`, `docs/COMPONENTS.md`, and a deterministic `ds-check` gate.
+3. **Real, reused components** — one canonical component per role, rendered here from the actual source. No hand-made mirror that drifts.
+
+## Source of truth
+
+Code first. Tokens live in `app/globals.css`. Components live in `components/ui/`. Never hardcode a value when a token exists — the `ds-check` gate enforces it.

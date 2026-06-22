@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./table"
 
-const meta = { title: "Components/Table" } satisfies Meta
+const meta = { title: "Base/Table" } satisfies Meta
 
 export default meta
 type Story = StoryObj

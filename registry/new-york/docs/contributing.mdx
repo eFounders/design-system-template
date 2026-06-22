@@ -1,0 +1,29 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Get started/Contributing" />
+
+# Contributing
+
+How to extend the design system without letting it drift.
+
+## Where things live
+
+| Layer | Folder | Distributed? |
+|---|---|---|
+| Tokens | `app/globals.css` | via `@efounders/theme` |
+| Component toolbox | `components/ui/` | standard shadcn, themed by the tokens |
+| Demo / landing | `app/` | no |
+
+**One canonical component per role.** Don't add `PrimaryButton` next to `Button`. If a component is missing, install it from shadcn (`npx shadcn add <name>`) — it inherits the theme automatically. Build a *custom* component only when it's a genuinely reusable pattern shadcn doesn't cover, and never one that just duplicates a primitive (a `Tag` that is only a `Badge` with a colour, for instance).
+
+## The gate
+
+```bash
+npm run ds-check        # or the /ds-check slash command
+```
+
+It fails the build on hardcoded colors and on `var(--token)` referencing a token not defined in `app/globals.css`. The gate **is** the design-system rules, made executable.
+
+## Tokens
+
+Change the brand by editing the knobs only: `--brand-*`, `--radius`, font, density. Everything re-skins from there. Add a `/* use for / not for */` comment when you introduce a new semantic token, so an agent picks the right one.

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 import { RadioGroup, RadioGroupItem } from "./radio-group"
 
-const meta = { title: "Components/RadioGroup" } satisfies Meta
+const meta = { title: "Base/RadioGroup" } satisfies Meta
 
 export default meta
 type Story = StoryObj
