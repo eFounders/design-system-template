@@ -11,6 +11,7 @@ The eFounders shared, brand-agnostic, AI-native **design-system template**. Clon
 | **Components** (the toolbox) | `components/ui/` — the full shadcn set, themed (46) |
 | **Visual identity** | `DESIGN.md` — portable summary for tools without the registry |
 | **Component specs / rules** | `docs/COMPONENTS.md` |
+| **Composition / layout** | `docs/COMPOSITION.md` (+ layout primitives `Container`/`Section`/`Stack`/`PageHeader` in `components/ui/`) |
 | **Agent index** | `llms.txt` |
 | **The gate** | `scripts/ds-check.mjs` (run `npm run ds-check` or `/ds-check`) |
 | **Distribution** | `registry.json` → `public/r/*.json` (`shadcn add @efounders/...`) |

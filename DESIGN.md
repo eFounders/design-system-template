@@ -6,7 +6,7 @@ source_of_truth: code            # tokens live in code, Figma reflects it
 files:
   tokens: app/tokens.css         # THE token values (edit the knobs here)
   components: components/ui/      # the 46-component toolbox
-  rules: CLAUDE.md, docs/COMPONENTS.md
+  rules: CLAUDE.md, docs/COMPONENTS.md, docs/COMPOSITION.md
   storybook: https://design-system-template-storybook.vercel.app
 
 # ── Brand knobs (the only things to change per project) ──
@@ -73,3 +73,7 @@ Radius: `--radius` (8px) is the default; `xs` 4 → `xl` 16, plus `full`. Elevat
 The toolbox is the **full shadcn component set** (Button, Input, Dialog, Sidebar, Command, Form, Table, Tabs, Tooltip… 46 in total), themed by the tokens above. One canonical component per role — never duplicate a primitive. Browse them all, themed and with every state, in the Storybook. Build a custom component only when it's a genuinely reusable pattern shadcn doesn't cover (then spec it in `docs/COMPONENTS.md`).
 
 Every screen handles the **5 states**: empty, loading, error, partial, ideal.
+
+## Layout
+
+Generous whitespace, a constrained reading width, one clear action per screen. Composition runs on four primitives, each owning one decision so screens stay consistent: `Container` (page width and gutters), `Section` (vertical rhythm), `Stack` (a column or row with a consistent gap), `PageHeader` (title, description, actions). Most screens follow a simple archetype: a single `Container`, a `PageHeader`, then stacked `Section`s. The full rules and page archetypes live in `docs/COMPOSITION.md`.

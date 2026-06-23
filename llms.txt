@@ -12,6 +12,7 @@
   two tiers (primitives → semantic), light + dark. (app/globals.css wires them into Tailwind.)
 - Visual identity (portable): DESIGN.md. Agent rules for this repo: CLAUDE.md.
 - Component specs (agent-readable): docs/COMPONENTS.md — token intent + component rules.
+- Composition (how to combine into screens): docs/COMPOSITION.md — layout primitives (Container/Section/Stack/PageHeader) + page archetypes.
 - Component code: components/ui/ — the full shadcn toolbox, themed by the tokens. registry/new-york/ holds the distributed theme.
 - Storybook (live reference): https://design-system-template-storybook.vercel.app
 
