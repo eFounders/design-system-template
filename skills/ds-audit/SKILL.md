@@ -37,7 +37,7 @@ Two questions, scored separately:
 - [ ] **Accessibility baseline** — keyboard reachable, visible focus, correct roles/ARIA, sufficient contrast on the tokens.
 - [ ] **A working quality setup** — lint/format configured and passing; a CI that runs it.
 
-## Dimension 2 — AI-native structure (16)
+## Dimension 2 — AI-native structure (17)
 
 ### A · Tokens — the material
 - [ ] **Semantic tokens named by role** (`--primary`, `--muted-foreground`…), mapped from primitives — not raw values in components.
@@ -53,8 +53,9 @@ Two questions, scored separately:
 - [ ] **A portable `DESIGN.md`** — the visual identity in one droppable file, for tools without registry access.
 - [ ] **UX patterns + hard rules explicit** — the 5 states (empty/loading/error/partial/ideal), one primary action, one icon library, never invent a value.
 
-### C · Components & storybook
+### C · Components, composition & storybook
 - [ ] **Real, reused components** (shadcn-based), themed by the tokens.
+- [ ] **A composition layer** — layout primitives (`Container`/`Section`/`Stack`/`PageHeader`) + a `COMPOSITION.md` (how to combine into screens, page archetypes), not just isolated components. Without it the agent colours components right but lays the page out inconsistently.
 - [ ] **A living storybook** that renders the REAL components — not a hand-made mirror that drifts. *(Noé)*
 
 ### D · Distribution
@@ -80,6 +81,7 @@ For every ❌/🟠, propose the fix AND the file to copy from `design-system-tem
 | No `DESIGN.md` | Generate from the tokens (frontmatter + Brand/Color/Type/Spacing/Components) | `DESIGN.md` |
 | No component specs | Write a specs doc (for/not-for, variants, tokens) | `docs/COMPONENTS.md` |
 | No / fake storybook | Wire a storybook that imports the REAL components + token foundations | `.storybook/`, `*.stories.tsx`, `registry/new-york/docs/*.mdx` |
+| No composition layer (only isolated components) | Add layout primitives + a composition doc (when to use each + page archetypes) | `components/ui/{container,section,stack,page-header}.tsx` + `docs/COMPOSITION.md` |
 | Not distributed | Stand up a shadcn registry (or package) | `registry.json` → `public/r/*.json`, `components.json` |
 | Dead code / scaffolding | Remove orphans and default framework assets | — (the cleanup itself) |
 
@@ -91,7 +93,7 @@ Bundle these into the plan in leverage order. The single highest-leverage item i
 # DS Audit — <project>  (branch <x> @ <sha>)
 
 **Verdict:** <(a) no DS yet | (b) has a DS, not AI-native | (c) AI-native with gaps | (d) solid>
-**Clean codebase:** <X/8>   ·   **AI-native:** <Y/16>   ·   one-line summary
+**Clean codebase:** <X/8>   ·   **AI-native:** <Y/17>   ·   one-line summary
 
 ## Dimension 1 — Clean codebase
 - ✅/🟠/❌ <criterion> — <evidence: file:line / tool output>
