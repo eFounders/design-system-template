@@ -136,7 +136,7 @@ In a Claude Code conversation **inside the project**:
 
 | You want… | You type |
 |---|---|
-| design a screen or a clickable flow (HTML or Figma) | `/ds-prototype [what you want]` |
+| design a screen or a clickable flow (HTML or Figma) | `/prototype [what you want]` |
 | a UX review | `/product-review` + screenshots + goal |
 | a DS health check | `/ds-audit` |
 

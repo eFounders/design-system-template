@@ -6,7 +6,7 @@
      • on the whole repo → a global DS audit + health score
    Deterministic only (no LLM): a gate must give the same verdict
    every run. The subjective/product review is separate & advisory
-   (the nelly-design-critique skill).
+   (the product-review skill, in the design-skills repo).
 
    USAGE
      node scripts/ds-check.mjs                  # scan the repo
