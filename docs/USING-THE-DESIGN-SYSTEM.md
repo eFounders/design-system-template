@@ -84,7 +84,7 @@ clicks. Figma leads here; there's no design system yet. **Once the DA is locked,
    (`shadcn add button input sidebar form …`) — all branded automatically by the theme.
 4. **Set the brand** — edit `--brand-*`, `--font-base`, `--radius`, `--text-base`.
 5. **Add `CLAUDE.md`** — copy `templates/CLAUDE.md`, fill the paths + tone.
-6. **Check + build** — run `/ds-audit`, then `/ds-prototype …`.
+6. **Check + build** — run `/ds-audit`, then `/prototype …`.
 
 ### B · A project that already has a design system
 
@@ -120,7 +120,7 @@ the design system exists, the **code leads** and Figma reflects it. Then you can
 several **pistes in Figma**, validate with the team, and Code Connect round-trips the
 chosen one to code.
 
-**One skill, two surfaces:** `/ds-prototype` outputs **HTML** (interactive flows + data
+**One skill, two surfaces:** `/prototype` outputs **HTML** (interactive flows + data
 scenarios, fast) **or Figma** (visual / DA exploration + team buy-in). Figma generation is
 token-heavy — dose it.
 
@@ -137,7 +137,7 @@ In a Claude Code conversation **inside the project**:
 | You want… | You type |
 |---|---|
 | design a screen or a clickable flow (HTML or Figma) | `/ds-prototype [what you want]` |
-| a UX review | `/nelly-design-critique` + screenshots + goal |
+| a UX review | `/product-review` + screenshots + goal |
 | a DS health check | `/ds-audit` |
 
 Because the project has its tokens + `CLAUDE.md`, what comes out is already on-brand —

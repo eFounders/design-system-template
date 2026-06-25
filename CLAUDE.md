@@ -31,4 +31,4 @@ The eFounders shared, brand-agnostic, AI-native **design-system template**. Clon
 
 ## Skills
 
-`/ds-audit` (assess a project) · `/ds-bootstrap` (set up a project's DS) · `/ds-figma` (Figma from code) · `/ds-prototype` (screens & flows).
+`/ds-audit` (assess a project) · `/ds-bootstrap` (set up a project's DS) · `/ds-figma` (Figma from code).

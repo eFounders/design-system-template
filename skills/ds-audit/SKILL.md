@@ -65,7 +65,7 @@ Two questions, scored separately:
 ### E · Verification
 - [ ] **A deterministic gate on PRs** — hardcoded values / unknown tokens fail the build (`ds-check`-style).
 - [ ] **A duplicate-component audit** in that gate (catches sprawl/copies automatically).
-- [ ] **A prototyping skill from the codebase** (`/ds-prototype`) — proof the DS is actually used to build.
+- [ ] **A prototyping skill from the codebase** (`/prototype`, from the `design-skills` repo) — proof the DS is actually used to build.
 
 ## Turnkey fixes — copy from the template
 

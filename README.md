@@ -29,7 +29,7 @@ independent (the code is owned, not a dependency).
 
 - **How to use it:** `docs/USING-THE-DESIGN-SYSTEM.md` ·
   [Notion](https://app.notion.com/p/3821cc0bd5bc818986acd792a4490721)
-- **Skills:** `/ds-audit` (assess) · `/ds-bootstrap` (create) · `/ds-figma` (Figma from code) · `/ds-prototype` (screens/flows)
+- **Skills:** `/ds-audit` (assess) · `/ds-bootstrap` (create) · `/ds-figma` (Figma from code)
 
 ## Dev
 

@@ -48,8 +48,10 @@ Components and patterns follow these automatically — do not retouch them per f
 ## How to prototype from this codebase
 
 In a Claude Code conversation **inside this project**:
-- Prototype a screen or a flow, HTML or Figma → `/ds-prototype [what you want]`
-- UX review → `/nelly-design-critique` + screenshots + goal
+- Prototype a screen or a flow, HTML or Figma → `/prototype [what you want]`
+- UX review → `/product-review` + screenshots + goal
+
+> The `/prototype` and `/product-review` skills live in the `design-skills` repo (design-system-agnostic), not in this template.
 
 These skills reuse the design system found in this directory, so output comes out
 on-brand automatically — because of this file.
