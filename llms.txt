@@ -4,8 +4,8 @@
 > code is the source of truth. This file tells an AI agent where everything is.
 
 ## Start here
-- How to use it: docs/USING-THE-DESIGN-SYSTEM.md (setup, onboarding, daily use)
-- Conventions template: templates/CLAUDE.md (drop into a project so the agent builds on-brand)
+- How to use it: Notion — AI-Design Workspace https://app.notion.com/p/3821cc0bd5bc818986acd792a4490721 (setup, onboarding, daily use)
+- Conventions template: templates/CLAUDE.project.md (drop into a project as CLAUDE.md so the agent builds on-brand)
 
 ## Tokens & components
 - Tokens (the contract): app/tokens.css — semantic shadcn tokens + in-house extensions,

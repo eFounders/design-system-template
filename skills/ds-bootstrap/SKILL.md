@@ -34,9 +34,10 @@ before generating.
 2. **Apply the DA = set the brand**, the *only* knobs to touch in the tokens file:
    `--brand-*` (the ramp), `--font-base` (+ display font), `--radius`, `--text-base`
    (density), `--tag-*`. Everything else follows. Keep the semantic contract intact.
-3. **Drop the conventions.** Copy `templates/CLAUDE.md` from the @efounders repo, fill it
-   (product, persona, tone, paths to tokens/components/storybook). Add `llms.txt` and the
-   `ds-check` gate (`scripts/ds-check.mjs` + `.github/workflows/ds-check.yml`). Write a short
+3. **Drop the conventions.** Copy `templates/CLAUDE.project.md` from the @efounders repo (rename it `CLAUDE.md` at the project root), fill it
+   (product, persona, tone, paths to tokens/components/storybook). Add the
+   `ds-check` gate (`scripts/ds-check.mjs` + `.github/workflows/ds-check.yml`), and a vendor-neutral
+   `llms.txt` only if the project exposes a public surface (docs/site/registry). Write a short
    `docs/COMPONENTS.md` for any bespoke this project adds.
 3b. **Storybook.** Stand up a live storybook route that renders the real components (like the
    @efounders one) — never a static mock.
