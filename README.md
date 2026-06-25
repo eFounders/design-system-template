@@ -8,6 +8,8 @@ independent (the code is owned, not a dependency).
 
 - **Clone the whole kit** — *Use this template* on GitHub. You get tokens + components +
   storybook + conventions as a starter you own and brand. *(Romain-style, but no drift.)*
+  First move after cloning: replace the root `CLAUDE.md` (which governs *this kit*) with a
+  filled-in copy of `templates/CLAUDE.project.md` — that's your project's conventions file.
 - **Pull pieces** — `shadcn add @efounders/<name>` from the registry
   (`https://design-system-template-registry.vercel.app/r/{name}.json`). Updating = re-pull.
 
@@ -21,14 +23,13 @@ independent (the code is owned, not a dependency).
 - **Storybook** — the real reference, published at
   `https://design-system-template-storybook.vercel.app` (Get started · Foundations · Base),
   rendering the actual components. `npm run storybook` to run it locally.
-- **Conventions** — `templates/CLAUDE.md` (drop-in), `docs/COMPONENTS.md` (specs), `llms.txt`.
+- **Conventions** — `templates/CLAUDE.project.md` (drop-in), `docs/COMPONENTS.md` (specs), `llms.txt`.
 - **Gate** — `scripts/ds-check.mjs` + `.github/workflows/ds-check.yml` (hardcoded values / unknown tokens fail).
 - **Registry** — `registry.json` → `public/r/*.json` (each item carries a `meta` contract).
 
 ## Docs & skills
 
-- **How to use it:** `docs/USING-THE-DESIGN-SYSTEM.md` ·
-  [Notion](https://app.notion.com/p/3821cc0bd5bc818986acd792a4490721)
+- **How to use it:** [Notion — AI-Design Workspace](https://app.notion.com/p/3821cc0bd5bc818986acd792a4490721) (setup, onboarding, daily use)
 - **Skills:** `/ds-audit` (assess) · `/ds-bootstrap` (create) · `/ds-figma` (Figma from code)
 
 ## Dev

@@ -2,13 +2,15 @@
 
 The eFounders shared, brand-agnostic, AI-native **design-system template**. Clone it per startup and re-brand. The **code is the source of truth**; Figma reflects it.
 
+> This file governs **the kit itself**. It is *not* the model for a consuming project — for that, fill `templates/CLAUDE.project.md` and drop it in as the project's own `CLAUDE.md`.
+
 ## Where everything is (one file = one role)
 
 | What | Where |
 |---|---|
 | **Tokens** (the values) | `app/tokens.css` — edit brand knobs here |
 | Tailwind wiring | `app/globals.css` (imports tokens.css, maps to utilities) |
-| **Components** (the toolbox) | `components/ui/` — the full shadcn set, themed (46) |
+| **Components** (the toolbox) | `components/ui/` — the full shadcn set (46) + 4 layout primitives, themed (50 files) |
 | **Visual identity** | `DESIGN.md` — portable summary for tools without the registry |
 | **Component specs / rules** | `docs/COMPONENTS.md` |
 | **Composition / layout** | `docs/COMPOSITION.md` (+ layout primitives `Container`/`Section`/`Stack`/`PageHeader` in `components/ui/`) |

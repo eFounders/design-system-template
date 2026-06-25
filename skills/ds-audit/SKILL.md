@@ -37,7 +37,7 @@ Two questions, scored separately:
 - [ ] **Accessibility baseline** — keyboard reachable, visible focus, correct roles/ARIA, sufficient contrast on the tokens.
 - [ ] **A working quality setup** — lint/format configured and passing; a CI that runs it.
 
-## Dimension 2 — AI-native structure (17)
+## Dimension 2 — AI-native structure (16)
 
 ### A · Tokens — the material
 - [ ] **Semantic tokens named by role** (`--primary`, `--muted-foreground`…), mapped from primitives — not raw values in components.
@@ -47,9 +47,8 @@ Two questions, scored separately:
 - [ ] **shadcn contract respected** (`--background`, `--card`, `--primary`, `--ring`…).
 
 ### B · Conventions — readable by the agent
-- [ ] **A `CLAUDE.md`/`AGENTS.md` at the root** pointing to tokens, components, rules. *(Highest-leverage single item.)*
+- [ ] **A `CLAUDE.md`/`AGENTS.md` at the root** pointing to tokens, components, rules. *(Highest-leverage single item.)* This is the in-repo agent index — it covers the "where everything lives" job. *(A vendor-neutral `llms.txt` is a nice-to-have on top, and mostly earns its place when the project also exposes a public surface — docs, website, published registry — that external agents query; don't dock an app repo for skipping it.)*
 - [ ] **Component specs** the agent can read: for / not-for, variants, states, tokens. *(R. Kavcic & TJ Pitre)*
-- [ ] **`llms.txt`** — an agent index of where everything lives.
 - [ ] **A portable `DESIGN.md`** — the visual identity in one droppable file, for tools without registry access.
 - [ ] **UX patterns + hard rules explicit** — the 5 states (empty/loading/error/partial/ideal), one primary action, one icon library, never invent a value.
 
@@ -77,7 +76,7 @@ For every ❌/🟠, propose the fix AND the file to copy from `design-system-tem
 | Hardcoded colors/px | Add the gate, then replace flagged values with tokens | `scripts/ds-check.mjs` + `.github/workflows/ds-check.yml` |
 | Duplicate components | Keep one canonical, delete copies — the gate's duplicate audit finds them | duplicate check inside `scripts/ds-check.mjs` |
 | No `CLAUDE.md` | Drop it in, adjust the paths/rules to the project | `CLAUDE.md` |
-| No `llms.txt` | Add the agent index | `llms.txt` |
+| No `llms.txt` *(only if a public surface exists — docs/site/registry)* | Add a vendor-neutral index for external agents; skip it for an app-only repo (`CLAUDE.md` already indexes it) | `llms.txt` |
 | No `DESIGN.md` | Generate from the tokens (frontmatter + Brand/Color/Type/Spacing/Components) | `DESIGN.md` |
 | No component specs | Write a specs doc (for/not-for, variants, tokens) | `docs/COMPONENTS.md` |
 | No / fake storybook | Wire a storybook that imports the REAL components + token foundations | `.storybook/`, `*.stories.tsx`, `registry/new-york/docs/*.mdx` |
@@ -93,7 +92,7 @@ Bundle these into the plan in leverage order. The single highest-leverage item i
 # DS Audit — <project>  (branch <x> @ <sha>)
 
 **Verdict:** <(a) no DS yet | (b) has a DS, not AI-native | (c) AI-native with gaps | (d) solid>
-**Clean codebase:** <X/8>   ·   **AI-native:** <Y/17>   ·   one-line summary
+**Clean codebase:** <X/8>   ·   **AI-native:** <Y/16>   ·   one-line summary
 
 ## Dimension 1 — Clean codebase
 - ✅/🟠/❌ <criterion> — <evidence: file:line / tool output>
@@ -115,7 +114,7 @@ Existing project (fill gaps, keep what works) | From scratch (duplicate the temp
 ## Tailor to the verdict
 
 - **(a) No DS yet** → from scratch: duplicate the template (Use this template) or run **`/ds-bootstrap`**; re-brand via the knobs.
-- **(b) Has a DS, not AI-native** → an existing project, the common case. The gap is usually the **conventions + verification layer**: drop in `CLAUDE.md`, `llms.txt`, `DESIGN.md`, component specs, the `ds-check` gate; make the storybook render real components. **Don't rebuild the tokens/components that already work** — point the conventions at them.
+- **(b) Has a DS, not AI-native** → an existing project, the common case. The gap is usually the **conventions + verification layer**: drop in `CLAUDE.md`, `DESIGN.md`, component specs, the `ds-check` gate (and a vendor-neutral `llms.txt` only if there's a public surface to index); make the storybook render real components. **Don't rebuild the tokens/components that already work** — point the conventions at them.
 - **(c) AI-native with gaps** → close the specific failed items; wire/upgrade the gate (incl. the duplicate audit); align token naming to the shadcn contract.
 - **(d) Solid** → keep it consuming the versioned base; maintain only.
 

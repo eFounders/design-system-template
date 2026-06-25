@@ -5,7 +5,7 @@ description: Brand-agnostic, AI-native design system. Tokens + the full shadcn t
 source_of_truth: code            # tokens live in code, Figma reflects it
 files:
   tokens: app/tokens.css         # THE token values (edit the knobs here)
-  components: components/ui/      # the 46-component toolbox
+  components: components/ui/      # 46 shadcn components + 4 layout primitives (50 files)
   rules: CLAUDE.md, docs/COMPONENTS.md, docs/COMPOSITION.md
   storybook: https://design-system-template-storybook.vercel.app
 
@@ -70,7 +70,7 @@ Radius: `--radius` (8px) is the default; `xs` 4 → `xl` 16, plus `full`. Elevat
 
 ## Components
 
-The toolbox is the **full shadcn component set** (Button, Input, Dialog, Sidebar, Command, Form, Table, Tabs, Tooltip… 46 in total), themed by the tokens above. One canonical component per role — never duplicate a primitive. Browse them all, themed and with every state, in the Storybook. Build a custom component only when it's a genuinely reusable pattern shadcn doesn't cover (then spec it in `docs/COMPONENTS.md`).
+The toolbox is the **full shadcn component set** (Button, Input, Dialog, Sidebar, Command, Form, Table, Tabs, Tooltip… 46 components), plus four in-house layout primitives (`Container`/`Section`/`Stack`/`PageHeader`) — 50 files in `components/ui/`, all themed by the tokens above. One canonical component per role — never duplicate a primitive. Browse them all, themed and with every state, in the Storybook. Build a custom component only when it's a genuinely reusable pattern shadcn doesn't cover (then spec it in `docs/COMPONENTS.md`).
 
 Every screen handles the **5 states**: empty, loading, error, partial, ideal.
 
