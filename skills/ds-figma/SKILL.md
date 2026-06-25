@@ -1,6 +1,6 @@
 ---
 name: ds-figma
-description: Generate or refresh a clean Figma design system FROM the code (the code is the source of truth). Use when a project has (or you're building) its design system in code and you want the Figma side clean and in sync — "make a clean Figma DS from the code", "sync Figma with the code", "the Figma is messy, rebuild it from the code". Variables = token names, library mirrors the real components, Code Connect, auto-layout. For an existing/legacy Figma DS: generate fresh and re-link the screens, do NOT merge. Uses the Figma MCP.
+description: 'Generate or refresh a clean Figma design system FROM the code (the code is the source of truth). Use when a project has (or you''re building) its design system in code and you want the Figma side clean and in sync — "make a clean Figma DS from the code", "sync Figma with the code", "the Figma is messy, rebuild it from the code". Variables = token names, library mirrors the real components, Code Connect, auto-layout. For an existing/legacy Figma DS: generate fresh and re-link the screens, do NOT merge. Uses the Figma MCP.'
 ---
 
 # ds-figma — a clean Figma DS, generated from the code
