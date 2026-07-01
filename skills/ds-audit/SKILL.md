@@ -1,6 +1,6 @@
 ---
 name: ds-audit
-description: Expert audit of a project's design system across TWO dimensions — (1) clean codebase and (2) AI-native structure (can an LLM read it and build on-brand reliably). Scores explicit criteria with evidence, then returns turnkey fixes that point to the design-system-template files to copy. Use when the user says "audit my DS", "is my design system AI-native", "check/score my design system", "what's missing", "am I ready to build UI with Claude here", or when onboarding an existing or new project to the @efounders design system. Most projects already have code — the job is to diagnose and fill the gaps using the template as the model, not rebuild from scratch.
+description: Expert audit of a project's design system across TWO dimensions — (1) clean codebase and (2) AI-native structure (can an LLM read it and build on-brand reliably). Scores explicit criteria with evidence, then returns turnkey fixes that point to the design-system-template files to copy. Use when the user says "audit my DS", "is my design system AI-native", "check/score my design system", "what's missing", "am I ready to build UI with Claude here", or when onboarding an existing or new project to the design system. Most projects already have code — the job is to diagnose and fill the gaps using the template as the model, not rebuild from scratch.
 ---
 
 # DS Audit — clean codebase + AI-native, with turnkey fixes
