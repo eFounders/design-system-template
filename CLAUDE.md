@@ -14,7 +14,7 @@ The eFounders shared, brand-agnostic, AI-native **design-system template**. Clon
 | **Visual identity** | `DESIGN.md` — portable summary for tools without the registry |
 | **Component specs / rules** | `docs/COMPONENTS.md` |
 | **Composition / layout** | `docs/COMPOSITION.md` (+ layout primitives `Container`/`Section`/`Stack`/`PageHeader` in `components/ui/`) |
-| **Agent index** | `llms.txt` |
+| **References** (north-star patterns) | `docs/REFERENCES.md` |
 | **The gate** | `scripts/ds-check.mjs` (run `npm run ds-check` or `/ds-check`) |
 | **Distribution** | `registry.json` → `public/r/*.json` (`shadcn add @efounders/...`) |
 | **Storybook** | `npm run storybook` · live: design-system-template-storybook.vercel.app |
