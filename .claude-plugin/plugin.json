@@ -1,6 +1,6 @@
 {
   "name": "design-system",
-  "description": "The @efounders design-system toolbox skills: assess a project (ds-audit), set up its design system (ds-bootstrap), and sync Figma from the code (ds-figma). Companion to the design-skills plugin.",
+  "description": "The design-system toolbox skills: assess a project (ds-audit), set up its design system (ds-bootstrap), and sync Figma from the code (ds-figma). Companion to the design-skills plugin.",
   "author": {
     "name": "Nelly Seiglan",
     "email": "nelly@hexa.com"
