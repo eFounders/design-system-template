@@ -1,6 +1,6 @@
 ---
 name: ds-bootstrap
-description: Bootstrap a project's design system from the @efounders base once a DA (art direction) is chosen — Phase 1. Use when the user says "create the design system for this project", "make me a perfect DS", "set up the DS from @efounders", "wire the design system here", or right after DA exploration. Seeds the @efounders skeleton, applies the project's brand, drops the conventions (CLAUDE.md, ds-check gate, llms.txt, component specs), generates first screens, and sets up the Figma bridge — with the code as the single source of truth. Unlike a generic from-scratch bootstrapper, this one starts from the shared @efounders base.
+description: Bootstrap a project's design system from the @efounders base once a DA (art direction) is chosen — Phase 1. Use when the user says "create the design system for this project", "make me a perfect DS", "set up the DS from @efounders", "wire the design system here", or right after DA exploration. Seeds the @efounders skeleton, applies the project's brand, drops the conventions (CLAUDE.md, ds-check gate, component specs), generates first screens, and sets up the Figma bridge — with the code as the single source of truth. Unlike a generic from-scratch bootstrapper, this one starts from the shared @efounders base.
 ---
 
 # ds-bootstrap — turn a chosen DA into a wired, on-brand design system
@@ -36,9 +36,9 @@ before generating.
    (density), `--tag-*`. Everything else follows. Keep the semantic contract intact.
 3. **Drop the conventions.** Copy `templates/CLAUDE.project.md` from the @efounders repo (rename it `CLAUDE.md` at the project root), fill it
    (product, persona, tone, paths to tokens/components/storybook). Add the
-   `ds-check` gate (`scripts/ds-check.mjs` + `.github/workflows/ds-check.yml`), and a vendor-neutral
-   `llms.txt` only if the project exposes a public surface (docs/site/registry). Write a short
-   `docs/COMPONENTS.md` for any bespoke this project adds.
+   `ds-check` gate (`scripts/ds-check.mjs` + `.github/workflows/ds-check.yml`). Write a short
+   `docs/COMPONENTS.md` for any bespoke this project adds, and seed `docs/REFERENCES.md`
+   (north-star patterns) only if the team already has validated references — leave it out otherwise.
 3b. **Storybook.** Stand up a live storybook route that renders the real components (like the
    @efounders one) — never a static mock.
 4. **Generate the first screens** with the DS, reusing the components (not from scratch).

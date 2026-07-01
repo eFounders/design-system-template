@@ -17,7 +17,7 @@ Two questions, scored separately:
 ## How to run
 
 1. **Target a git repo.** Inside a project → confirm `git rev-parse --is-inside-work-tree` and audit the working tree. Given a GitHub repo → shallow-clone (`gh repo clone <owner/repo> <tmp> -- --depth=1 --single-branch`), audit the clone, remove it. Always note the branch/commit.
-2. **Locate the DS — don't assume, Glob/Grep.** Tokens (`globals.css`, `tokens.css`, `styles.css`, `tailwind.config`), `components.json` (shadcn), `components/ui/` or a bespoke folder, `CLAUDE.md`/`AGENTS.md`, `llms.txt`, `DESIGN.md`, a storybook/preview, CI, a `ds-check`-style script.
+2. **Locate the DS — don't assume, Glob/Grep.** Tokens (`globals.css`, `tokens.css`, `styles.css`, `tailwind.config`), `components.json` (shadcn), `components/ui/` or a bespoke folder, `CLAUDE.md`/`AGENTS.md`, `DESIGN.md`, a storybook/preview, CI, a `ds-check`-style script.
 3. **Run the tooling that gives deterministic evidence** (don't eyeball what a tool can prove):
    - `npx tsc --noEmit` → type health
    - lint/format if present (`npm run lint`)
@@ -47,7 +47,7 @@ Two questions, scored separately:
 - [ ] **shadcn contract respected** (`--background`, `--card`, `--primary`, `--ring`…).
 
 ### B · Conventions — readable by the agent
-- [ ] **A `CLAUDE.md`/`AGENTS.md` at the root** pointing to tokens, components, rules. *(Highest-leverage single item.)* This is the in-repo agent index — it covers the "where everything lives" job. *(A vendor-neutral `llms.txt` is a nice-to-have on top, and mostly earns its place when the project also exposes a public surface — docs, website, published registry — that external agents query; don't dock an app repo for skipping it.)*
+- [ ] **A `CLAUDE.md`/`AGENTS.md` at the root** pointing to tokens, components, rules. *(Highest-leverage single item.)* This is the in-repo agent index — it covers the "where everything lives" job.
 - [ ] **Component specs** the agent can read: for / not-for, variants, states, tokens. *(R. Kavcic & TJ Pitre)*
 - [ ] **A portable `DESIGN.md`** — the visual identity in one droppable file, for tools without registry access.
 - [ ] **UX patterns + hard rules explicit** — the 5 states (empty/loading/error/partial/ideal), one primary action, one icon library, never invent a value.
@@ -56,6 +56,7 @@ Two questions, scored separately:
 - [ ] **Real, reused components** (shadcn-based), themed by the tokens.
 - [ ] **A composition layer** — layout primitives (`Container`/`Section`/`Stack`/`PageHeader`) + a `COMPOSITION.md` (how to combine into screens, page archetypes), not just isolated components. Without it the agent colours components right but lays the page out inconsistently.
 - [ ] **A living storybook** that renders the REAL components — not a hand-made mirror that drifts. *(Noé)*
+- [ ] **A references doc (bonus)** — `docs/REFERENCES.md`, the north-star patterns to match (interaction + feel), rendered with the project's own tokens/components. Anchors novel screens; a nice-to-have, never dock a project for skipping it.
 
 ### D · Distribution
 - [ ] **A versioned source of truth projects consume** (registry or package) — updating = re-pull, not re-paste. *(Noé)*
@@ -76,11 +77,11 @@ For every ❌/🟠, propose the fix AND the file to copy from `design-system-tem
 | Hardcoded colors/px | Add the gate, then replace flagged values with tokens | `scripts/ds-check.mjs` + `.github/workflows/ds-check.yml` |
 | Duplicate components | Keep one canonical, delete copies — the gate's duplicate audit finds them | duplicate check inside `scripts/ds-check.mjs` |
 | No `CLAUDE.md` | Drop it in, adjust the paths/rules to the project | `CLAUDE.md` |
-| No `llms.txt` *(only if a public surface exists — docs/site/registry)* | Add a vendor-neutral index for external agents; skip it for an app-only repo (`CLAUDE.md` already indexes it) | `llms.txt` |
 | No `DESIGN.md` | Generate from the tokens (frontmatter + Brand/Color/Type/Spacing/Components) | `DESIGN.md` |
 | No component specs | Write a specs doc (for/not-for, variants, tokens) | `docs/COMPONENTS.md` |
 | No / fake storybook | Wire a storybook that imports the REAL components + token foundations | `.storybook/`, `*.stories.tsx`, `registry/new-york/docs/*.mdx` |
 | No composition layer (only isolated components) | Add layout primitives + a composition doc (when to use each + page archetypes) | `components/ui/{container,section,stack,page-header}.tsx` + `docs/COMPOSITION.md` |
+| No references doc *(bonus)* | Add `docs/REFERENCES.md`: north-star patterns to match, rendered with the project's own tokens/components | `docs/REFERENCES.md` |
 | Not distributed | Stand up a shadcn registry (or package) | `registry.json` → `public/r/*.json`, `components.json` |
 | Dead code / scaffolding | Remove orphans and default framework assets | — (the cleanup itself) |
 
@@ -114,7 +115,7 @@ Existing project (fill gaps, keep what works) | From scratch (duplicate the temp
 ## Tailor to the verdict
 
 - **(a) No DS yet** → from scratch: duplicate the template (Use this template) or run **`/ds-bootstrap`**; re-brand via the knobs.
-- **(b) Has a DS, not AI-native** → an existing project, the common case. The gap is usually the **conventions + verification layer**: drop in `CLAUDE.md`, `DESIGN.md`, component specs, the `ds-check` gate (and a vendor-neutral `llms.txt` only if there's a public surface to index); make the storybook render real components. **Don't rebuild the tokens/components that already work** — point the conventions at them.
+- **(b) Has a DS, not AI-native** → an existing project, the common case. The gap is usually the **conventions + verification layer**: drop in `CLAUDE.md`, `DESIGN.md`, component specs, the `ds-check` gate; make the storybook render real components. **Don't rebuild the tokens/components that already work** — point the conventions at them.
 - **(c) AI-native with gaps** → close the specific failed items; wire/upgrade the gate (incl. the duplicate audit); align token naming to the shadcn contract.
 - **(d) Solid** → keep it consuming the versioned base; maintain only.
 

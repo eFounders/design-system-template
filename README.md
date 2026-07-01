@@ -23,14 +23,13 @@ independent (the code is owned, not a dependency).
 - **Storybook** — the real reference, published at
   `https://design-system-template-storybook.vercel.app` (Get started · Foundations · Base),
   rendering the actual components. `npm run storybook` to run it locally.
-- **Conventions** — `templates/CLAUDE.project.md` (drop-in), `docs/COMPONENTS.md` (specs), `llms.txt`.
+- **Conventions** — `templates/CLAUDE.project.md` (drop-in), `docs/COMPONENTS.md` (specs).
 - **Gate** — `scripts/ds-check.mjs` + `.github/workflows/ds-check.yml` (hardcoded values / unknown tokens fail).
 - **Registry** — `registry.json` → `public/r/*.json` (each item carries a `meta` contract).
 
-## Docs & skills
+## Skills
 
-- **How to use it:** [Notion — AI-Design Workspace](https://app.notion.com/p/3821cc0bd5bc818986acd792a4490721) (setup, onboarding, daily use)
-- **Skills:** `/ds-audit` (assess) · `/ds-bootstrap` (create) · `/ds-figma` (Figma from code)
+`/ds-audit` (assess) · `/ds-bootstrap` (create) · `/ds-figma` (Figma from code)
 
 ## Dev
 
@@ -42,3 +41,7 @@ npm run ds-check        # the conformance gate
 ```
 
 Storybook (live): https://design-system-template-storybook.vercel.app · Registry JSON: https://design-system-template-registry.vercel.app/r/{name}.json
+
+## Feedback & license
+
+Open and [MIT](LICENSE)-licensed: clone it, brand it, own it. Found a bug? Open an issue.
